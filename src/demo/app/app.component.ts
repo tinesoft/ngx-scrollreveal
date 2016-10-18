@@ -1,3 +1,4 @@
+import { NgsRevealConfig } from './shared/ngs-reveal-config';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  col1Config: NgsRevealConfig = {reset:true};
 }
