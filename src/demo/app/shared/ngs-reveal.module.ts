@@ -1,8 +1,7 @@
 import { NgsRevealService } from './ngs-reveal.service';
-import { WindowRef } from './window-ref';
 import { NgsRevealConfig } from './ngs-reveal-config';
 import { NGS_REVEAL_DIRECTIVES } from './ngs-reveal.directive';
-import { NgModule,ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -13,10 +12,10 @@ import { CommonModule } from '@angular/common';
   declarations: [NGS_REVEAL_DIRECTIVES]
 })
 export class NgsRevealModule {
-  static forRoot(): ModuleWithProviders  {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgsRevealModule,
-      providers: [NgsRevealConfig,NgsRevealService]
-    }
+      providers: [NgsRevealConfig, NgsRevealService]
+    };
   }
- }
+}

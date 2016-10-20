@@ -1,6 +1,6 @@
 import { NgsRevealConfig } from './ngs-reveal-config';
 import { NgsRevealService } from './ngs-reveal.service';
-import { Directive, OnInit, OnChanges, SimpleChange, ElementRef, Input } from '@angular/core';
+import { Directive, HostBinding, OnInit, OnChanges, SimpleChange, ElementRef, Input } from '@angular/core';
 
 /**
  * Base directive class shared by the concrete ScrollReveal directives.
@@ -12,10 +12,10 @@ abstract class AbstractNgsRevealDirective {
     constructor(protected ngsRevealService: NgsRevealService) { }
 
     protected _initConfig(value: string | NgsRevealConfig): void {
-        if (value && typeof value === "string") {
+        if (value && typeof value === 'string') {
             this.config = JSON.stringify(value);
         }
-        else if (value && typeof value === "object") {
+        else if (value && typeof value === 'object') {
             this.config = value;
         }
     }
@@ -26,19 +26,19 @@ abstract class AbstractNgsRevealDirective {
  * This directive automatically sets the element's visibility to `hidden` to avoid any flickering issue that may occur when ScrollReveal.js kicks in. 
  */
 @Directive({
-    selector: '[ngsReveal]',
-    host: {
-        '[style.visibility]': 'hidden'
-    }
+    selector: '[ngsReveal]'
 })
 export class NgsRevealDirective extends AbstractNgsRevealDirective implements OnInit {
+
+    @HostBinding('style.visibility')
+    visibility = 'hidden';
 
     /**
      * Custom configuration to use when revealing this element
      */
-    @Input("ngsReveal")
+    @Input('ngsReveal')
     set _config(value: string | NgsRevealConfig) {
-        this._initConfig(value)
+        this._initConfig(value);
     }
 
     constructor(private elementRef: ElementRef, ngsRevealService: NgsRevealService) {
@@ -65,27 +65,27 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements
     /**
      * Custom configuration to use when revealing this set of elements 
      */
-    @Input("ngsRevealSet")
+    @Input('ngsRevealSet')
     set _config(value: string | NgsRevealConfig) {
-        this._initConfig(value)
+        this._initConfig(value);
     }
 
     /**
      * CSS selector to identify child elements to reveal
      */
-    @Input("ngsSelector")
+    @Input('ngsSelector')
     selector: string;
 
     /**
      * Sequence interval (in milliseconds) to the reveal child elements sequentially
      */
-    @Input("ngsInterval")
+    @Input('ngsInterval')
     interval: number;
 
     /**
      * Boolean indicating when the set should be synced, to reveal asynchronously added child elements
      */
-    @Input("ngsSync")
+    @Input('ngsSync')
     sync: boolean;
 
     constructor(private elementRef: ElementRef, ngsRevealService: NgsRevealService) {
@@ -102,10 +102,10 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements
 
     ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
 
-        let ngsSyncProp = "ngsSync";
-        if (ngsSyncProp in changes //
+        let ngsSyncProp = 'ngsSync';
+        if (ngsSyncProp in changes
             && !changes[ngsSyncProp].isFirstChange()
-            && !changes[ngsSyncProp].currentValue()) { //we only need to  sync 
+            && !changes[ngsSyncProp].currentValue()) {
             this.ngsRevealService.sync();
         }
     }

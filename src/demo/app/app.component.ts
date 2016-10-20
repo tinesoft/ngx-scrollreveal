@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  col1Config: NgsRevealConfig = {reset:true};
+  col1Config: NgsRevealConfig = { reset: true };
 }
