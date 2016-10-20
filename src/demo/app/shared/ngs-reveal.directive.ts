@@ -11,11 +11,11 @@ abstract class AbstractNgsRevealDirective {
 
     constructor(protected ngsRevealService: NgsRevealService) { }
 
-    protected _initConfig (value: string | NgsRevealConfig): void{
-        if(value && typeof value === "string"){
+    protected _initConfig(value: string | NgsRevealConfig): void {
+        if (value && typeof value === "string") {
             this.config = JSON.stringify(value);
         }
-        else if(value && typeof value === "object"){
+        else if (value && typeof value === "object") {
             this.config = value;
         }
     }
@@ -37,15 +37,15 @@ export class NgsRevealDirective extends AbstractNgsRevealDirective implements On
      * Custom configuration to use when revealing this element
      */
     @Input("ngsReveal")
-    set _config (value: string | NgsRevealConfig){
+    set _config(value: string | NgsRevealConfig) {
         this._initConfig(value)
     }
-    
+
     constructor(private elementRef: ElementRef, ngsRevealService: NgsRevealService) {
         super(ngsRevealService);
-     }
+    }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.ngsRevealService.reveal(this.elementRef, this.config);
     }
 }
@@ -60,13 +60,13 @@ export class NgsRevealDirective extends AbstractNgsRevealDirective implements On
 @Directive({
     selector: '[ngsRevealSet]'
 })
-export class NgsRevealSetDirective extends AbstractNgsRevealDirective  implements OnInit, OnChanges  {
+export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements OnInit, OnChanges {
 
     /**
      * Custom configuration to use when revealing this set of elements 
      */
     @Input("ngsRevealSet")
-    set _config (value: string | NgsRevealConfig){
+    set _config(value: string | NgsRevealConfig) {
         this._initConfig(value)
     }
 
@@ -74,13 +74,13 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective  implement
      * CSS selector to identify child elements to reveal
      */
     @Input("ngsSelector")
-    selector:string;
+    selector: string;
 
     /**
      * Sequence interval (in milliseconds) to the reveal child elements sequentially
      */
     @Input("ngsInterval")
-    interval:number;
+    interval: number;
 
     /**
      * Boolean indicating when the set should be synced, to reveal asynchronously added child elements
@@ -90,22 +90,22 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective  implement
 
     constructor(private elementRef: ElementRef, ngsRevealService: NgsRevealService) {
         super(ngsRevealService);
-     }
+    }
 
-    ngOnInit() { 
-        if(!this.selector && console){
+    ngOnInit() {
+        if (!this.selector && console) {
             console.error("[ngsScrollReveal] You must specify '[ngsSelector]' attribute when using ngsRevealSet directive");
             return;
         }
-        this.ngsRevealService.revealSet(this.elementRef, this.selector, this.interval,this.config);
+        this.ngsRevealService.revealSet(this.elementRef, this.selector, this.interval, this.config);
     }
 
-    ngOnChanges( changes: {[propertyName: string]: SimpleChange}){
+    ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
 
         let ngsSyncProp = "ngsSync";
-        if(ngsSyncProp in changes //
-            && !changes[ngsSyncProp].isFirstChange() 
-            && !changes[ngsSyncProp].currentValue()){ //we only need to  sync 
+        if (ngsSyncProp in changes //
+            && !changes[ngsSyncProp].isFirstChange()
+            && !changes[ngsSyncProp].currentValue()) { //we only need to  sync 
             this.ngsRevealService.sync();
         }
     }
