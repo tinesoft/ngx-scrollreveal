@@ -1,6 +1,6 @@
+import { Directive, HostBinding, OnInit, OnChanges, SimpleChange, ElementRef, Input } from '@angular/core';
 import { NgsRevealConfig } from './ngs-reveal-config';
 import { NgsRevealService } from './ngs-reveal.service';
-import { Directive, HostBinding, OnInit, OnChanges, SimpleChange, ElementRef, Input } from '@angular/core';
 
 /**
  * Base directive class shared by the concrete ScrollReveal directives.

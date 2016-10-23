@@ -1,5 +1,5 @@
-import { NgsRevealConfig } from './ngs-reveal-config';
 import { Injectable, ElementRef } from '@angular/core';
+import { NgsRevealConfig } from './ngs-reveal-config';
 
 /**
  * Service to inject in directives to use ScrollReveal JS. 

@@ -1,5 +1,5 @@
-import { NgsRevealConfig } from './shared/ngs-reveal-config';
 import { Component } from '@angular/core';
+import { NgsRevealConfig } from './../../lib/ngs-reveal-config';
 
 @Component({
   selector: 'app-root',

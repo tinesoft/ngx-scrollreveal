@@ -1,8 +1,8 @@
-import { NgsRevealModule } from './shared/ngs-reveal.module';
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NgsRevealModule } from '../../lib/ngs-reveal.module';
 
 describe('App: Ng2Scrollreveal', () => {
   beforeEach(() => {
