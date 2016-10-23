@@ -2,15 +2,16 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { NgsRevealService } from './ngs-reveal.service';
+import { NgsRevealConfig } from './ngs-reveal-config';
 
 describe('Service: NgsReveal', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [NgsRevealService]
+      providers: [NgsRevealConfig, NgsRevealService]
     });
   });
 
-  it('should ...', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should create the service instance...', inject([NgsRevealService], (service: NgsRevealService) => {
     expect(service).toBeTruthy();
   }));
 });

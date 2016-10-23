@@ -12,6 +12,7 @@ module.exports = function (config) {
       require('angular-cli/plugins/karma')
     ],
     files: [
+      'node_modules/scrollreveal/dist/scrollreveal.js',// FIXME TKO: bug in cli?
       { pattern: './src/demo/test.ts', watched: false }
     ],
     preprocessors: {

@@ -1,16 +1,16 @@
-/// <reference path="../../../../node_modules/@types/scrollreveal/index.d.ts"/>
 import { NgsRevealConfig } from './ngs-reveal-config';
 import { Injectable, ElementRef } from '@angular/core';
 
 /**
  * Service to inject in directives to use ScrollReveal JS. 
- * It delegates the work to SR, when DOM manipulation is possible (i.e app is not running in a web worker for example) 
- * Otherwise, we most methods simply do nothing, as DOM elements are not available.
+ * It delegates the work to SR, when DOM manipulation is possible (i.e app is not running in a web worker for e.g). 
+ * Otherwise, most methods simply do nothing, as DOM elements are not available anyway.
  */
 @Injectable()
 export class NgsRevealService {
 
-  sr: scrollReveal.ScrollRevealObject;
+  // the Magic Maker !
+  private sr: scrollReveal.ScrollRevealObject;
 
   constructor(config: NgsRevealConfig) {
     // init the scrollReveal library with injected config

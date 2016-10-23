@@ -1,7 +1,7 @@
-import { NgsRevealService } from './ngs-reveal.service';
 import { NgsRevealConfig } from './ngs-reveal-config';
-import { NGS_REVEAL_DIRECTIVES } from './ngs-reveal.directive';
+import { NgsRevealService } from './ngs-reveal.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NGS_REVEAL_DIRECTIVES } from './ngs-reveal.directive';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
