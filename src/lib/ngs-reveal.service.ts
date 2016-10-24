@@ -4,7 +4,7 @@ import { NgsRevealConfig } from './ngs-reveal-config';
 /**
  * Service to inject in directives to use ScrollReveal JS. 
  * It delegates the work to SR, when DOM manipulation is possible (i.e app is not running in a web worker for e.g). 
- * Otherwise, most methods simply do nothing, as DOM elements are not available anyway.
+ * If not possible, most methods simply do nothing, as DOM elements are not available anyway.
  */
 @Injectable()
 export class NgsRevealService {

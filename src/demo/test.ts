@@ -12,7 +12,7 @@ declare var __karma__: any;
 declare var require: any;
 
 // Prevent Karma from running prematurely.
-__karma__.loaded = function () {};
+__karma__.loaded = function () { };
 
 
 Promise.all([
@@ -27,7 +27,7 @@ Promise.all([
     );
   })
   // Then we find all the tests.
-  .then(() => require.context('./', true, /\.spec\.ts/))
+  .then(() => require.context('../', true, /\.spec\.ts/))
   // And load the modules.
   .then(context => context.keys().map(context))
   // Finally, start Karma to run the tests.

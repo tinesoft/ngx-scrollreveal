@@ -5,9 +5,9 @@ import { NgsRevealService } from './ngs-reveal.service';
 /**
  * Base directive class shared by the concrete ScrollReveal directives.
  */
-abstract class AbstractNgsRevealDirective {
+export abstract class AbstractNgsRevealDirective {
 
-    protected config: NgsRevealConfig;
+    config: NgsRevealConfig;
 
     constructor(protected ngsRevealService: NgsRevealService) { }
 
@@ -94,7 +94,7 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements
 
     ngOnInit() {
         if (!this.selector && console) {
-            console.error("[ngsScrollReveal] You must specify '[ngsSelector]' attribute when using ngsRevealSet directive");
+            console.error('[ngsScrollReveal] You must specify "[ngsSelector]" attribute when using ngsRevealSet directive');
             return;
         }
         this.ngsRevealService.revealSet(this.elementRef, this.selector, this.interval, this.config);
