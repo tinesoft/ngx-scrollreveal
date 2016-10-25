@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 import { NgsRevealModule } from './ngs-reveal.module';
 import { NgsRevealConfig } from './ngs-reveal-config';
-import { NgsRevealDirective, NgsRevealSetDirective } from './ngs-reveal.directive';
+import { NgsRevealDirective } from './ngs-reveal.directive';
 
 import { not } from '../test/common';
 
