@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es6",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "moduleResolution": "node",
+        "declaration": true,
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "stripInternal": true,
+        "outDir": "../../dist",
+        "rootDir": ".",
+        "sourceMap": true,
+        "inlineSources": true,
+        "skipLibCheck": true
+    },
+    "files": [
+        "index.ts"
+    ],
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true,
+        "genDir": "../../dist/waste"
+    }
+}

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
@@ -8,7 +7,7 @@
       "dom"
     ],
     "module": "commonjs",
-    "moduleResolution": "node",
+    "noEmitOnError": true,
     "outDir": "../../dist/lib/out-tsc",
     "sourceMap": true,
     "target": "es5",
@@ -17,5 +16,6 @@
     "typeRoots": [
       "../../node_modules/@types"
     ]
-  }
+  },
+  "compileOnSave": false
 }

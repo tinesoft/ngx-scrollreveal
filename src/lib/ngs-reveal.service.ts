@@ -39,9 +39,7 @@ export class NgsRevealService {
     if (parentElementRef.nativeElement) {// can be null, if app is running in a web worker for i.e 
       return this.sr.reveal(selector, config, interval);
     }
-    else {
-      return this.sr;
-    }
+    return this.sr;
   }
 
   /**
