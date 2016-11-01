@@ -1,31 +1,145 @@
-# Ng2Scrollreveal
+# ng2-scrollreveal - [Angular 2](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
+[![npm version](https://badge.fury.io/js/ng2-scrollreveal.svg)](https://badge.fury.io/js/ng2-scrollreveal)
+[![Build Status](https://travis-ci.org/tinesoft/ng2-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng2-scrollreveal)
+[![devDependency Status](https://david-dm.org/tinesoft/ng2-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ng2-scrollreveal#info=devDependencies)
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ScrollReveal JS is a great library that allows easy scroll animations for web and mobile browsers.
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+View all the directives in action at https://tinesoft.github.io/ng2-scrollreveal
 
-## Build
+## Dependencies
+* [Angular 2](https://angular.io) (*requires* Angular 2 or higher, tested with 2.0.0)
+* [ScrollReveal](https://scrollrevealjs.org) (tested with 3.3.2)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Installation
+Install above dependencies via *npm*. In particular for `ScrollReveal JS`, run:
+```shell
+npm install --save scrollreveal
+```
 
-## Running unit tests
+>**Note**: If you are using `angular-cli` to build your app, make sure that `scrollreveal` is properly listed as a [global library](https://github.com/angular/angular-cli#global-library-installation), by editing your `angular-cli.json` as such:
+```
+      "scripts": [
+        "../node_modules/scrollreveal/dist/scrollreveal.js"
+      ],
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Now install `ng2-scrollreveal` via:
+```shell
+npm install --save ng2-scrollreveal
+```
 
-## Running end-to-end tests
+Once installed you need to import the main module:
+```js
+import {NgsRevealModule} from 'ng2-scrollreveal';
+```
+The only remaining part is to list the imported module in your application module. The exact method will be slightly
+different for the root (top-level) module for which you should end up with the code similar to (notice `NgsRevealModule.forRoot()`):
+```js
+import {NgsRevealModule} from 'ng2-scrollreveal';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+@NgModule({
+  declarations: [AppComponent, ...],
+  imports: [NgsRevealModule.forRoot(), ...],  
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
 
-## Deploying to Github Pages
+Other modules in your application can simply import `NgsRevealModule`:
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+```js
+import {NgsRevealModule} from 'ng2-scrollreveal';
 
-## Further help
+@NgModule({
+  declarations: [OtherComponent, ...],
+  imports: [NgsRevealModule, ...], 
+})
+export class OtherModule {
+}
+```
 
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Usage
+
+The library is composed of two main directives: `ngsReveal` and `ngsRevealSet`.
+
+### ngsReveal Directive
+
+Use this directive to reveal/hide a **single DOM element** upon scroll.
+
+#### Basic Usage:
+
+```html
+    <div class="item" ngsReveal>..</div>
+```
+
+#### With Custom Options:
+
+You can also pass in a custom configuration object to the directive.
+```html
+    <div class="item" [ngsReveal]="{ reset: true}" >..</div>
+```
+This will override the default configuration used when revealing this particular element.
+When no configuration is passed in, the directive uses the default configuration defined at component or at application level.
+
+Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
+
+### ngsRevealSet Directive
+
+Use this directive to reveal/hide a **set of DOM elements** upon scroll.
+
+`[ngsSelector]` attribute is required, and defines which child items must be revealed/hidden on scroll.
+
+>**Note:** The value is a list of CSS selectors (comma-separated).
+
+
+#### Basic Usage:
+
+```html
+    <div class="itemset" ngsRevealSet [ngsSelector]="'.item'">
+        <div class="item item1">Item 1 </div>
+        <div class="item item2">Item 2 </div>
+        <div class="item item3">Item 3 </div>
+        <div class="item item4">Item 4 </div>
+        <div class="item5">Item 5 (will not be animated)</div>
+    </div>
+```
+
+#### With Custom Options:
+
+```html
+    <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsSelector]="'.item'">
+        <div class="item item1">Item 1 </div>
+        <div class="item item2">Item 2 </div>
+        <div class="item item3">Item 3 </div>
+        <div class="item item4">Item 4 </div>
+        <div class="item5">Item 5 (will not be animated)</div>
+    </div>
+```
+Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
+
+#### Sequentially animated items: 
+
+Child items inside the parent set can be sequentially animated, by adding the `[ngsRevealInterval]` attribute.
+
+>**Note:** The interval is the time until the next element in the sequence begins its reveal, which is separate from the time until the element’s animation completes. In this example, the sequence interval is 50 milliseconds.
+
+```html
+    <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsInterval]="50" [ngsSelector]="'.item'">
+        <div class="item item1">Item 1 </div>
+        <div class="item item2">Item 2 </div>
+        <div class="item item3">Item 3 </div>
+        <div class="item item4">Item 4 </div>
+        <div class="item5">Item 5 will not be animated)</div>
+    </div>
+
+```
+
+
+## Credits
+
+`ng2-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!
