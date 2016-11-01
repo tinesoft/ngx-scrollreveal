@@ -1,23 +1,34 @@
+import { AppRoutingModule } from './app-routing';
+import { AppSharedModule } from './shared/shared.module';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
 import { NgsRevealModule } from '../../lib/ngs-reveal.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    NgsRevealModule.forRoot()
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        GettingStartedComponent,
+        HomeComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        AppRoutingModule,
+        AppSharedModule,
+        NgsRevealModule.forRoot(),
+        NgbModule.forRoot()
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

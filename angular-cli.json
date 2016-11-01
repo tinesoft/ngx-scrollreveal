@@ -18,7 +18,9 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "../../node_modules/bootstrap/scss/bootstrap.scss",
+        "../../node_modules/font-awesome/scss/font-awesome.scss",
+        "styles.scss"
       ],
       "scripts": [
         "../../node_modules/scrollreveal/dist/scrollreveal.js"
@@ -43,7 +45,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {
       "style": false,
