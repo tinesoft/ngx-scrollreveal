@@ -7,8 +7,8 @@ import { AbstractNgsRevealDirective } from './ngs-reveal-common';
 /**
  * Directive to add 'ScrollReveal' functionality to a <b>set of DOM elements</b> (identify via the `[ngsSelector]` attribute) in the page.
  * This directive is meant to be placed on the <b>parent node</b> that contains the child elements to reveal.
- * You can optionally add the `[ngsInterval]` attribute to reveal items sequentially, following the given interval of time.
- * You can optionally add the `[ngsSync]` attribute to auto-sync (and reveal) new child elements that may have been added in the parent node asynchronously.
+ * You can optionally add the `[ngsInterval]` attribute to reveal items sequentially, following the given interval(in milliseconds).
+ * You can optionally add the `[ngsSync]` attribute to reveal new child elements that may have been added in the parent node asynchronously.
  * 
  */
 @Directive({
@@ -49,7 +49,7 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements
     ngOnInit() {
         if (!this.selector && console) {
             let item: string = this.elementRef.nativeElement ? this.elementRef.nativeElement.className : '';
-            console.error(`[ng2-scrollreveal] You must specify "[ngsSelector]" attribute on item '${item}' when using "ngsRevealSet" directive`);
+            console.error(`[ng2-scrollreveal] You must set "[ngsSelector]" attribute on item '${item}' when using "ngsRevealSet"`);
             return;
         }
         this.ngsRevealService.revealSet(this.elementRef, this.selector, this.interval, this.config);

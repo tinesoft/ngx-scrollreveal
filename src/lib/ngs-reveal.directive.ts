@@ -5,7 +5,6 @@ import { AbstractNgsRevealDirective } from './ngs-reveal-common';
 
 /**
  * Directive to add 'ScrollReveal' functionality to a <b>single DOM element</b> in the page.
- * This directive automatically sets the element's visibility to `hidden` to avoid any flickering issue that may occur when ScrollReveal.js kicks in. 
  */
 @Directive({
     selector: '[ngsReveal]'

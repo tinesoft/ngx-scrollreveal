@@ -13,8 +13,7 @@ export abstract class AbstractNgsRevealDirective {
     protected _initConfig(value: string | NgsRevealConfig): void {
         if (value && typeof value === 'string') {
             this.config = JSON.stringify(value);
-        }
-        else if (value && typeof value === 'object') {
+        } else if (value && typeof value === 'object') {
             this.config = value;
         }
     }

@@ -43,7 +43,7 @@ export class NgsRevealService {
   }
 
   /**
-   * Method to synchronize and consider newly added child elements (for e.g when child elements were added asynchronously to parent DOM) 
+   * Method to synchronize and consider newly added child elements (for e.g when child elements were added asynchronously to parent DOM) .
    */
   sync(): void {
     this.sr.sync();
