@@ -41,9 +41,9 @@ gulp.task('ngc', function (cb) {
     }).stdout.on('data', function (data) { console.log(data); });
 });
 
-gulp.task('umd', function (callback) {
+gulp.task('umd', function (cb) {
     // run webpack
-    webpack(webpackConfig, webpackCallBack);
+    webpack(webpackConfig, webpackCallBack('webpack', cb));
 });
 
 gulp.task('npm', function () {
