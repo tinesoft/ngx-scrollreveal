@@ -2,7 +2,7 @@
   "name": "ng2-scrollreveal",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Angular 2 directives for ScrollReveal: Easy scroll animations library for web and mobile browsers.",
+  "description": "Angular 2 directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
   "keywords": [
     "angular2",
     "angular 2",
@@ -49,11 +49,15 @@
     "@types/scrollreveal": "0.0.2",
     "angular-cli": "^1.0.0-beta.19-3",
     "codelyzer": "1.0.0-beta.1",
+    "conventional-github-releaser": "^1.1.3",
     "core-js": "^2.4.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
+    "gulp-bump": "^2.5.0",
     "gulp-conventional-changelog": "^1.1.0",
     "gulp-file": "^0.3.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-git": "^1.12.0",
     "gulp-shell": "^0.5.2",
     "gulp-util": "^3.0.7",
     "jasmine-core": "2.4.1",
@@ -71,6 +75,7 @@
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
     "webdriver-manager": "10.2.5",
+    "yargs": "^6.3.0",
     "zone.js": "^0.6.23"
   }
 }

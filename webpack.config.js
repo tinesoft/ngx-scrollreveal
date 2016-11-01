@@ -42,7 +42,7 @@ module.exports = {
     ],
 
     output: {
-        path: root('dist/bundles'),
+        path: root('dist/lib/bundles'),
         filename: LIBRARY_NAME + '.min.js',
         library: LIBRARY_NAME,
         libraryTarget: 'umd',

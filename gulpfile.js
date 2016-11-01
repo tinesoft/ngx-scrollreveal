@@ -10,6 +10,20 @@ var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 var runSequence = require('run-sequence');
 
+var conventionalChangelog = require('gulp-conventional-changelog');
+var conventionalGithubReleaser = require('conventional-github-releaser');
+var bump = require('gulp-bump');
+var git = require('gulp-git');
+var fs = require('fs');
+var argv = require('yargs')
+    .option('type', {
+        alias: 't',
+        choices: ['patch', 'minor', 'major']
+    })
+    .argv;
+
+
+
 const LIBRARY_NAME = 'ng2-scrollreveal';
 
 //Helper functions
@@ -27,10 +41,11 @@ function webpackCallBack(taskName, gulpDone) {
     }
 }
 
+gulp.task('clean:build', function () { return del('dist/'); });
+gulp.task('clean:lib', function () { return del('dist/lib'); });
+gulp.task('clean:demo', function () { return del('dist/demo'); });
 
 // Transpiling & Building
-
-gulp.task('clean:build', function () { return del('dist/'); });
 
 gulp.task('ngc', function (cb) {
     var executable = path.join(__dirname, platformPath('/node_modules/.bin/ngc'));
@@ -66,41 +81,119 @@ gulp.task('npm', function () {
 
     return gulp.src('README.md')
         .pipe(gulpFile('package.json', JSON.stringify(targetPkgJson, null, 2)))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/lib'));
 });
 
-gulp.task('changelog', function () {
-    var conventionalChangelog = require('gulp-conventional-changelog');
-    return gulp.src('CHANGELOG.md', {})
-        .pipe(conventionalChangelog({ preset: 'angular', releaseCount: 1 }, {
-            // Override release version to avoid `v` prefix for git comparison
-            // See https://github.com/conventional-changelog/conventional-changelog-core/issues/10
-            currentTag: require('./package.json').version
-        }))
-        .pipe(gulp.dest('./'));
-});
-
-
-gulp.task('clean:demo', function () { return del('dist/demo'); });
-
+// Demo Tasks
 gulp.task('serve:demo', shell.task('ng serve'));
 
 gulp.task('build:demo', shell.task('ng build --prod'));
 
-gulp.task('push:demo', shell.task('ng gh-pages:deploy'));
+gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username tinesoft'));
+
+// Release Tasks
+gulp.task('changelog', function () {
+    return gulp.src('CHANGELOG.md', { buffer: false })
+        .pipe(conventionalChangelog({
+            preset: 'angular', releaseCount: 1
+        }))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('github-release', function (done) {
+    conventionalGithubReleaser({
+        type: "oauth",
+        token: gutil.env.GITHUB_TOKEN
+    },
+        { preset: 'angular' },
+        done);
+});
+
+gulp.task('bump-version', function () {
+    // We hardcode the version change type to 'patch' but it may be a good idea to
+    // use minimist (https://www.npmjs.com/package/minimist) to determine with a
+    // command argument whether you are doing a 'major', 'minor' or a 'patch' change.
+    return gulp.src('./package.json')
+        .pipe(bump({ type: argv.type || 'patch' }).on('error', gutil.log))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('commit-changes', function () {
+    return gulp.src('.')
+        .pipe(git.add())
+        .pipe(git.commit('[Prerelease] Bumped version number'));
+});
+
+gulp.task('push-changes', function (cb) {
+    git.push('origin', 'master', cb);
+});
+
+gulp.task('create-new-tag', function (cb) {
+    var version = getPackageJsonVersion();
+    git.tag(version, 'Created Tag for version: ' + version, function (error) {
+        if (error) {
+            return cb(error);
+        }
+        git.push('origin', 'master', { args: '--tags' }, cb);
+    });
+
+    function getPackageJsonVersion() {
+        // We parse the json file instead of using require because require caches
+        // multiple calls so the version number won't be updated
+        return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+    };
+});
+
+gulp.task('release', function (callback) {
+    runSequence(
+        'bump-version',
+        'changelog',
+        'commit-changes',
+        'push-changes',
+        'create-new-tag',
+        'github-release',
+        function (error) {
+            if (error) {
+                console.log(error.message);
+            } else {
+                console.log('RELEASE FINISHED SUCCESSFULLY');
+            }
+            callback(error);
+        });
+});
+
+gulp.task('publish', function (done) {
+    // run npm publish terminal command 
+    exec('npm publish .dist/lib',
+        function (error, stdout, stderr) {
+            if (stderr) {
+                gutil.log(gutil.colors.red(stderr));
+            } else if (stdout) {
+                gutil.log(gutil.colors.green(stdout));
+            }
+            // execute callback when its done 
+            if (done) {
+                done();
+            }
+        }
+    );
+});
 
 // Public Tasks
-gulp.task('clean', ['clean:build', 'clean:demo']);
+gulp.task('clean', ['clean:lib', 'clean:demo']);
 
 gulp.task('test', shell.task('ng test --watch false'));
 
 gulp.task('lint', shell.task('ng lint'));
 
-gulp.task('build', function (done) {
-    runSequence('lint', /*'enforce-format', 'ddescribe-iit', */'test', 'clean:build', 'ngc', 'umd', 'npm', done);
+gulp.task('build:lib', function (done) {
+    runSequence(/*'lint', 'enforce-format', 'ddescribe-iit', */ 'clean:lib', 'test', 'ngc', 'umd', 'npm', done);
 });
 
 gulp.task(
     'deploy-demo', function (done) { runSequence('clean:demo', 'build:demo', 'push:demo', done); });
+
+gulp.task(
+    'deploy-lib', function (done) { runSequence('clean:lib', 'build:lib', 'release', 'publish', done); });
 
 gulp.task('default', function (done) { runSequence('lint', /*'enforce-format', 'ddescribe-iit', */'test', done); });
