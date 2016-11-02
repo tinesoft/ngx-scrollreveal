@@ -1,37 +1,5 @@
-    <div class="demo" [ngsRevealSet]="{reset: true}" [ngsSelector]="'.seq-1'" [ngsInterval]="200" >
-      <div class="column column-1">
-        <div [ngsReveal]="col1Config" class="block red seq-1"></div>
-        <div ngsReveal class="block orange"></div>
-        <div [ngsReveal]="{reset: true}" class="block purple"></div>
-        <div ngsReveal class="block blue"></div>
-      </div>
-      <div [ngsRevealSet]="{ reset: true, viewOffset: { top: 64 } }"  [ngsSelector]="'.demo .block'" class="column column-2">
-        <div class="block orange seq-1"></div>
-        <div class="block purple"></div>
-        <div class="block red"></div>
-        <div class="block green"></div>
-      </div>
-      <div class="column column-3">
-          <div class="block yellow seq-1"></div>
-          <div class="block blue"></div>
-          <div class="block green"></div>
-          <div class="block yellow"></div>
-      </div>
-      <div class="column column-4">
-        <div class="block green seq-1"></div>
-        <div class="block yellow"></div>
-        <div class="block orange"></div>
-      </div>
-      <div class="column column-5">
-        <div class="block blue seq-1"></div>
-        <div class="block red"></div>
-        <div class="block purple"></div>
-        <div class="block red"></div>
-      </div>
-      <div class="column column-6">
-        <div class="block purple seq-1"></div>
-        <div class="block yellow"></div>
-        <div class="block orange"></div>
-        <div class="block purple"></div>
-      </div>
-    </div>
+<app-header></app-header>
+<div>
+	<router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
