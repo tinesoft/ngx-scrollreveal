@@ -1,0 +1,65 @@
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="logo-container">
+					<img src="assets/angular.svg" class="angular-logo">
+					<img src="assets/scrollreveal.svg" class="scrollreveal-logo">
+				</div>
+
+			</div>
+			<div class="col-md-8">
+				<h1>ng2-scrollreveal</h1>
+				<p><a href="htts://angular.io" target="_blank">Angular 2</a> directives for <a href="htts://scrollrevealjs.org" target="_blank">ScrollReveal JS</a>:
+					easy scroll animations library for mobile and web browsers.</p>
+				<p>Scroll down to see it in action!</p>
+				<p class="buttons-bar">
+					<a class="btn btn-outline-primary btn-lg" href="https://scrollrevealjs.org" target="_blank"><i class="fa fa-info fa-lg"></i> Learn more</a>
+					<a class="btn btn-outline-primary btn-lg" href="https://github.com/tinesoft/ng2-scrollreveal" target="_blank"><i class="fa fa-github ga-lg"></i>  Code on Github</a>
+					<a class="btn btn-outline-primary btn-lg" href="https://github.com/tinesoft/ng2-scrollreveal/releases/tag/v1.0.2" target="_blank"><i class="fa fa-download fa-lg"></i> Download</a>
+				</p>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="demo" [ngsRevealSet]="{reset: true}" [ngsSelector]="'.seq-1'" [ngsInterval]="200">
+	<div class="column column-1">
+		<div [ngsReveal]="col1Config" class="block red seq-1"></div>
+		<div ngsReveal class="block orange"></div>
+		<div [ngsReveal]="{reset: true}" class="block purple"></div>
+		<div ngsReveal class="block blue"></div>
+	</div>
+	<div [ngsRevealSet]="{ reset: true, viewOffset: { top: 64 } }" [ngsSelector]="'.demo .block'" class="column column-2">
+		<div class="block orange seq-1"></div>
+		<div class="block purple"></div>
+		<div class="block red"></div>
+		<div class="block green"></div>
+	</div>
+	<div class="column column-3">
+		<div class="block yellow seq-1"></div>
+		<div class="block blue"></div>
+		<div class="block green"></div>
+		<div class="block yellow"></div>
+	</div>
+	<div class="column column-4">
+		<div class="block green seq-1"></div>
+		<div class="block yellow"></div>
+		<div class="block orange"></div>
+	</div>
+	<div class="column column-5">
+		<div class="block blue seq-1"></div>
+		<div class="block red"></div>
+		<div class="block purple"></div>
+		<div class="block red"></div>
+	</div>
+	<div class="column column-6">
+		<div class="block purple seq-1"></div>
+		<div class="block yellow"></div>
+		<div class="block orange"></div>
+		<div class="block purple"></div>
+	</div>
+</div>

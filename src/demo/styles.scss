@@ -61,42 +61,19 @@
     text-decoration: underline
 }
 
-
-
-.red {
-    background: #e31d65
-}
-
-.orange {
-    background: #ff7c35
-}
-
-.yellow {
-    background: #fc0
-}
-
-.green {
-    background: #2ead6d
-}
-
-.blue {
-    background: #008597
-}
-
-.purple {
-    background: #5943aa
-}
-
-.slate {
-    background: #2d3443
-}
-
-
 .jumbotron {
   margin-top: 3.4rem;
-  color: #fff;
-  border-radius: 0;
+  margin-bottom: 0rem;
+ // color: #fff;
+//  background:linear-gradient(135deg, #0143A3, #0273D4);
+
+  h1{
+      font-size:4.0rem;
+      margin-bottom: 1.8rem;
+  }
+
+  p {
+      font-size: 1.4rem;
+  }
 }
-
-
 
