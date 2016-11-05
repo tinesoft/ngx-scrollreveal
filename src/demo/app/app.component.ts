@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgsRevealConfig } from './../../lib/ngs-reveal-config';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,4 @@ import { NgsRevealConfig } from './../../lib/ngs-reveal-config';
 })
 export class AppComponent {
 
-  col1Config: NgsRevealConfig = { reset: true };
 }

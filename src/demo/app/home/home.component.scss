@@ -1,32 +1,7 @@
-.logo-container {
-  position: relative;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-  background-color: #1a2434;//rgb(52, 71, 79);
-
-  margin: 1.25rem;
+.logo {
   width: 256px;
   height: 256px;
-
-  img.angular-logo  {
-    position: relative;
-    width: 256px;
-    height: 256px;
-    top: 0px;
-    right: 0px;
-    z-index: 1;
-  }
-
-    img.scrollreveal-logo  {
-    position: absolute;
-    width: 256px;
-    height: 256px;
-    top: 0px;
-    left:0px;
-    z-index: 0;
-  }
+  margin-top: 1.8rem;
 }
 
 
