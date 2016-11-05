@@ -21,8 +21,7 @@ var argv = require('yargs')
         choices: ['patch', 'minor', 'major']
     })
     .argv;
-
-
+var typedoc = require('gulp-typedoc');
 
 const LIBRARY_NAME = 'ng2-scrollreveal';
 
@@ -43,6 +42,7 @@ function webpackCallBack(taskName, gulpDone) {
 
 gulp.task('clean:build', function () { return del('dist/'); });
 gulp.task('clean:lib', function () { return del('dist/lib'); });
+gulp.task('clean:doc', function () { return del('dist/doc'); });
 gulp.task('clean:demo', function () { return del('dist/demo'); });
 
 // Transpiling & Building
@@ -62,7 +62,7 @@ gulp.task('umd', function (cb) {
 });
 
 gulp.task('npm', function () {
-    var pkgJson = require('./package.json');
+    var pkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
     var targetPkgJson = {};
     var fieldsToCopy = ['version', 'description', 'keywords', 'author', 'repository', 'license', 'bugs', 'homepage'];
 
@@ -84,6 +84,35 @@ gulp.task('npm', function () {
         .pipe(gulp.dest('dist/lib'));
 });
 
+
+gulp.task('typedoc', function () {
+    return gulp
+        .src(['src/lib/**/*.ts', '!src/lib/**/*.spec.ts'])
+        .pipe(typedoc({
+            // TypeScript options (see typescript docs) 
+            mode: 'modules',
+            ignoreCompilerErrors: true,
+            experimentalDecorators: true,
+            emitDecoratorMetadata: true,
+            target: 'es6',
+            moduleResolution: 'node',
+            preserveConstEnums: true,
+            stripInternal: true,
+            suppressExcessPropertyErrors: true,
+            suppressImplicitAnyIndexErrors: true,
+            module: 'commonjs',
+
+            // Typedoc options
+            name: 'ng2-scrollreveal API Doc',
+            theme: 'default',
+            out: './dist/doc',
+            hideGenerator: true,
+            excludeExternals: true,
+            excludePrivate: true
+
+        }));
+});
+
 // Demo Tasks
 gulp.task('serve:demo', shell.task('ng serve'));
 
@@ -102,7 +131,7 @@ gulp.task('changelog', function () {
 
 gulp.task('github-release', function (done) {
     conventionalGithubReleaser({
-        type: "oauth",
+        type: 'oauth',
         token: gutil.env.GITHUB_TOKEN
     },
         { preset: 'angular' },
@@ -164,7 +193,7 @@ gulp.task('release', function (callback) {
 
 gulp.task('publish', function (done) {
     // run npm publish terminal command 
-    exec('npm publish .dist/lib',
+    exec('npm publish ./dist/lib',
         function (error, stdout, stderr) {
             if (stderr) {
                 gutil.log(gutil.colors.red(stderr));
@@ -180,7 +209,7 @@ gulp.task('publish', function (done) {
 });
 
 // Public Tasks
-gulp.task('clean', ['clean:lib', 'clean:demo']);
+gulp.task('clean', ['clean:lib', 'clean:demo', 'clean:demo']);
 
 gulp.task('test', shell.task('ng test --watch false'));
 

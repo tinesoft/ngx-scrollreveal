@@ -139,7 +139,6 @@ Child items inside the parent set can be sequentially animated, by adding the `[
 
 ```
 
-
 ## Credits
 
 `ng2-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!
