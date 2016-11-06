@@ -68,16 +68,17 @@ export class OtherModule {
 The library is composed of two main directives: `ngsReveal` and `ngsRevealSet`.
 
 ### ngsReveal Directive
+-----------------------
 
 Use this directive to reveal/hide a **single DOM element** upon scroll.
 
-#### Basic Usage:
+##### Basic Usage:
 
 ```html
     <div class="item" ngsReveal>..</div>
 ```
 
-#### With Custom Options:
+##### With Custom Options:
 
 You can also pass in a custom configuration object to the directive.
 ```html
@@ -89,6 +90,7 @@ When no configuration is passed in, the directive uses the default configuration
 Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
 
 ### ngsRevealSet Directive
+---------------------------
 
 Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 
@@ -97,7 +99,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 >**Note:** The value is a list of CSS selectors (comma-separated).
 
 
-#### Basic Usage:
+##### Basic Usage:
 
 ```html
     <div class="itemset" ngsRevealSet [ngsSelector]="'.item'">
@@ -109,7 +111,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
     </div>
 ```
 
-#### With Custom Options:
+##### With Custom Options:
 
 ```html
     <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsSelector]="'.item'">
@@ -122,7 +124,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 ```
 Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
 
-#### Sequentially animated items: 
+##### Sequentially animated items: 
 
 Child items inside the parent set can be sequentially animated, by adding the `[ngsRevealInterval]` attribute.
 

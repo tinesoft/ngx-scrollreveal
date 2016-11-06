@@ -47,11 +47,12 @@ export class OtherModule {{ '{' }}
 <h2 id="usage">Usage</h2>
 <p>The library is composed of two main directives: <code>ngsReveal</code> and <code>ngsRevealSet</code>.</p>
 <h3 id="ngsreveal-directive">ngsReveal Directive</h3>
+<hr>
 <p>Use this directive to reveal/hide a <strong>single DOM element</strong> upon scroll.</p>
-<h4 id="basic-usage-">Basic Usage:</h4>
+<h5 id="basic-usage-">Basic Usage:</h5>
 <pre><code class="lang-html">    &lt;div class=&quot;item&quot; ngsReveal&gt;..&lt;/div&gt;
 </code></pre>
-<h4 id="with-custom-options-">With Custom Options:</h4>
+<h5 id="with-custom-options-">With Custom Options:</h5>
 <p>You can also pass in a custom configuration object to the directive.</p>
 <pre><code class="lang-html">    &lt;div class=&quot;item&quot; [ngsReveal]=&quot;{{ '{' }} reset: true}&quot; &gt;..&lt;/div&gt;
 </code></pre>
@@ -59,12 +60,13 @@ export class OtherModule {{ '{' }}
 When no configuration is passed in, the directive uses the default configuration defined at component or at application level.</p>
 <p>Configuration options are the same as ScrollReveal JS <a href="https://github.com/jlmakes/scrollreveal#2-configuration">configuration object</a>. </p>
 <h3 id="ngsrevealset-directive">ngsRevealSet Directive</h3>
+<hr>
 <p>Use this directive to reveal/hide a <strong>set of DOM elements</strong> upon scroll.</p>
 <p><code>[ngsSelector]</code> attribute is required, and defines which child items must be revealed/hidden on scroll.</p>
 <blockquote>
 <p><strong>Note:</strong> The value is a list of CSS selectors (comma-separated).</p>
 </blockquote>
-<h4 id="basic-usage-">Basic Usage:</h4>
+<h5 id="basic-usage-">Basic Usage:</h5>
 <pre><code class="lang-html">    &lt;div class=&quot;itemset&quot; ngsRevealSet [ngsSelector]=&quot;&#39;.item&#39;&quot;&gt;
         &lt;div class=&quot;item item1&quot;&gt;Item 1 &lt;/div&gt;
         &lt;div class=&quot;item item2&quot;&gt;Item 2 &lt;/div&gt;
@@ -73,7 +75,7 @@ When no configuration is passed in, the directive uses the default configuration
         &lt;div class=&quot;item5&quot;&gt;Item 5 (will not be animated)&lt;/div&gt;
     &lt;/div&gt;
 </code></pre>
-<h4 id="with-custom-options-">With Custom Options:</h4>
+<h5 id="with-custom-options-">With Custom Options:</h5>
 <pre><code class="lang-html">    &lt;div class=&quot;itemset&quot; [ngsRevealSet]=&quot;{{ '{' }} reset:true}&quot; [ngsSelector]=&quot;&#39;.item&#39;&quot;&gt;
         &lt;div class=&quot;item item1&quot;&gt;Item 1 &lt;/div&gt;
         &lt;div class=&quot;item item2&quot;&gt;Item 2 &lt;/div&gt;
@@ -83,7 +85,7 @@ When no configuration is passed in, the directive uses the default configuration
     &lt;/div&gt;
 </code></pre>
 <p>Configuration options are the same as ScrollReveal JS <a href="https://github.com/jlmakes/scrollreveal#2-configuration">configuration object</a>. </p>
-<h4 id="sequentially-animated-items-">Sequentially animated items:</h4>
+<h5 id="sequentially-animated-items-">Sequentially animated items:</h5>
 <p>Child items inside the parent set can be sequentially animated, by adding the <code>[ngsRevealInterval]</code> attribute.</p>
 <blockquote>
 <p><strong>Note:</strong> The interval is the time until the next element in the sequence begins its reveal, which is separate from the time until the element’s animation completes. In this example, the sequence interval is 50 milliseconds.</p>
