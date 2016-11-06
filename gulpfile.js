@@ -22,6 +22,12 @@ var argv = require('yargs')
     })
     .argv;
 var typedoc = require('gulp-typedoc');
+var template = require('gulp-md-template');
+var rename = require('gulp-rename');
+var replace = require('gulp-replace');
+
+
+
 
 const LIBRARY_NAME = 'ng2-scrollreveal';
 
@@ -40,6 +46,7 @@ function webpackCallBack(taskName, gulpDone) {
     }
 }
 
+// Cleaning Tasks
 gulp.task('clean:build', function () { return del('dist/'); });
 gulp.task('clean:lib', function () { return del('dist/lib'); });
 gulp.task('clean:doc', function () { return del('dist/doc'); });
@@ -116,9 +123,18 @@ gulp.task('typedoc', function () {
 // Demo Tasks
 gulp.task('serve:demo', shell.task('ng serve'));
 
-gulp.task('build:demo', shell.task('ng build --prod'));
+gulp.task('build:demo', ['md'], shell.task('ng build --prod'));
 
 gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username tinesoft'));
+
+gulp.task('md', function () {
+    return gulp.src('./src/demo/app/getting-started/getting-started.component.mt')
+        .pipe(template('.'))
+        .pipe(replace(/(<h1 id[^>]+>[^]+?)(<h2 id="installation">)/, '$2'))// strips everything between start to '<h2 id="installation">'
+        .pipe(replace('{', "{{ '{' }}")) // escapes '{' for angular
+        .pipe(rename({ extname: '.html' }))
+        .pipe(gulp.dest('./src/demo/app/getting-started'));
+});
 
 // Release Tasks
 gulp.task('changelog', function () {
