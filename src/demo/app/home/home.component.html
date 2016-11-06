@@ -1,6 +1,5 @@
 <div class="jumbotron jumbotron-fluid">
 	<div class="container">
-
 		<div class="row">
 			<div class="col-md-4">
 				<img src="assets/logo.png" alt="ng2-scrollreveal logo" class="logo rounded mx-auto">
@@ -13,7 +12,7 @@
 				<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 					<a class="btn btn-outline-primary btn-lg" href="https://scrollrevealjs.org" target="_blank"><i class="fa fa-info fa-lg"></i> Learn more</a>
 					<a class="btn btn-outline-primary btn-lg" href="https://github.com/tinesoft/ng2-scrollreveal" target="_blank"><i class="fa fa-github fa-lg"></i>  Code on Github</a>
-					<a class="btn btn-outline-primary btn-lg" href="https://github.com/tinesoft/ng2-scrollreveal/releases/tag/v1.0.2" target="_blank"><i class="fa fa-download fa-lg"></i> Download</a>
+					<a class="btn btn-outline-primary btn-lg" href="https://github.com/tinesoft/ng2-scrollreveal/releases/tag/" target="_blank"><i class="fa fa-download fa-lg"></i> Download</a>
 				</div>
 
 			</div>
@@ -22,7 +21,7 @@
 	</div>
 </div>
 
-<div class="demo" [ngsRevealSet]="{reset: true}" [ngsSelector]="'.seq-1'" [ngsInterval]="200">
+<section class="demo" [ngsRevealSet]="{reset: true}" [ngsSelector]="'.seq-1'" [ngsInterval]="200">
 	<div class="column column-1">
 		<div [ngsReveal]="col1Config" class="block red seq-1"></div>
 		<div ngsReveal class="block orange"></div>
@@ -58,4 +57,4 @@
 		<div class="block orange"></div>
 		<div class="block purple"></div>
 	</div>
-</div>
+</section>
