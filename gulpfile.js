@@ -128,7 +128,7 @@ gulp.task('serve:demo', shell.task('ng serve'));
 
 gulp.task('build:demo', ['md'], shell.task('ng build --prod'));
 
-gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username tinesoft'));
+gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username=tinesoft', { interactive: true }));
 
 gulp.task('md', function () {
     return gulp.src('./src/demo/app/getting-started/getting-started.component.hbs')
