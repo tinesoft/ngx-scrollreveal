@@ -22,10 +22,12 @@ var argv = require('yargs')
     })
     .argv;
 var typedoc = require('gulp-typedoc');
-var template = require('gulp-md-template');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
-
+var Handlebars = require('handlebars');
+var HighlightJS = require('highlight.js');
+var markdown = require('gulp-markdown');
+var tap = require('gulp-tap');
 
 
 
@@ -45,6 +47,7 @@ function webpackCallBack(taskName, gulpDone) {
         gulpDone();
     }
 }
+
 
 // Cleaning Tasks
 gulp.task('clean:build', function () { return del('dist/'); });
@@ -128,12 +131,32 @@ gulp.task('build:demo', ['md'], shell.task('ng build --prod'));
 gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username tinesoft'));
 
 gulp.task('md', function () {
-    return gulp.src('./src/demo/app/getting-started/getting-started.component.mt')
-        .pipe(template('.'))
-        .pipe(replace(/(<h1 id[^>]+>[^]+?)(<h2 id="installation">)/, '$2'))// strips everything between start to '<h2 id="installation">'
-        .pipe(replace('{', "{{ '{' }}")) // escapes '{' for angular
-        .pipe(rename({ extname: '.html' }))
-        .pipe(gulp.dest('./src/demo/app/getting-started'));
+    return gulp.src('./src/demo/app/getting-started/getting-started.component.hbs')
+        .pipe(tap(function (file) {
+            var template = Handlebars.compile(file.contents.toString());
+
+            return gulp.src('./README.md')
+                // convert from markdown
+                .pipe(markdown({
+                    highlight: function (code) {
+                        return HighlightJS.highlightAuto(code).value;
+                    }
+                }))
+                .pipe(tap(function (file) {
+                    // file is the converted HTML from the markdown
+                    // set the contents to the contents property on data
+                    var data = { README_md: file.contents.toString() };
+                    // we will pass data to the Handlebars template to create the actual HTML to use
+                    var html = template(data);
+                    // replace the file contents with the new HTML created from the Handlebars template + data object that contains the HTML made from the markdown conversion
+                    file.contents = new Buffer(html, "utf-8");
+                }))
+                .pipe(replace(/(<h1 id[^>]+>[^]+?)(<h2 id="installation">)/, '$2'))// strips everything between start & '<h2 id="installation">'
+                .pipe(replace('{', "{{ '{' }}")) // escapes '{' to comply with  angular parser
+                .pipe(rename('getting-started.component.html'))
+                .pipe(gulp.dest('./src/demo/app/getting-started'));
+
+        }));
 });
 
 // Release Tasks

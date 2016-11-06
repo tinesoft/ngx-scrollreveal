@@ -6,42 +6,42 @@
 
 <section class="getting-started">
   <div class="container">
-<h2 id="installation">Installation</h2>
+    <h2 id="installation">Installation</h2>
 <p>Install above dependencies via <em>npm</em>. In particular for <code>ScrollReveal JS</code>, run:</p>
-<pre><code class="lang-shell">npm install --save scrollreveal
+<pre><code class="lang-shell">npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save scrollreveal</span>
 </code></pre>
 <blockquote>
 <p><strong>Note</strong>: If you are using <code>angular-cli</code> to build your app, make sure that <code>scrollreveal</code> is properly listed as a <a href="https://github.com/angular/angular-cli#global-library-installation">global library</a>, by editing your <code>angular-cli.json</code> as such:</p>
-<pre><code>      &quot;scripts&quot;: [
-        &quot;../node_modules/scrollreveal/dist/scrollreveal.js&quot;
+<pre><code>      <span class="hljs-string">"scripts"</span>: [
+        <span class="hljs-string">"../node_modules/scrollreveal/dist/scrollreveal.js"</span>
       ],
 </code></pre></blockquote>
 <p>Now install <code>ng2-scrollreveal</code> via:</p>
-<pre><code class="lang-shell">npm install --save ng2-scrollreveal
+<pre><code class="lang-shell">npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save ng2-scrollreveal</span>
 </code></pre>
 <p>Once installed you need to import the main module:</p>
-<pre><code class="lang-js">import {{ '{' }}NgsRevealModule} from &#39;ng2-scrollreveal&#39;;
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {{ '{' }}NgsRevealModule} <span class="hljs-keyword">from</span> <span class="hljs-string">'ng2-scrollreveal'</span>;
 </code></pre>
 <p>The only remaining part is to list the imported module in your application module. The exact method will be slightly
 different for the root (top-level) module for which you should end up with the code similar to (notice <code>NgsRevealModule.forRoot()</code>):</p>
-<pre><code class="lang-js">import {{ '{' }}NgsRevealModule} from &#39;ng2-scrollreveal&#39;;
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {{ '{' }}NgsRevealModule} <span class="hljs-keyword">from</span> <span class="hljs-string">'ng2-scrollreveal'</span>;
 
 @NgModule({{ '{' }}
   declarations: [AppComponent, ...],
   imports: [NgsRevealModule.forRoot(), ...],  
   bootstrap: [AppComponent]
 })
-export class AppModule {{ '{' }}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppModule {{ '{' }}
 }
 </code></pre>
 <p>Other modules in your application can simply import <code>NgsRevealModule</code>:</p>
-<pre><code class="lang-js">import {{ '{' }}NgsRevealModule} from &#39;ng2-scrollreveal&#39;;
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> {{ '{' }}NgsRevealModule} <span class="hljs-keyword">from</span> <span class="hljs-string">'ng2-scrollreveal'</span>;
 
 @NgModule({{ '{' }}
   declarations: [OtherComponent, ...],
   imports: [NgsRevealModule, ...], 
 })
-export class OtherModule {{ '{' }}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> OtherModule {{ '{' }}
 }
 </code></pre>
 <h2 id="usage">Usage</h2>
@@ -50,11 +50,11 @@ export class OtherModule {{ '{' }}
 <hr>
 <p>Use this directive to reveal/hide a <strong>single DOM element</strong> upon scroll.</p>
 <h5 id="basic-usage-">Basic Usage:</h5>
-<pre><code class="lang-html">    &lt;div class=&quot;item&quot; ngsReveal&gt;..&lt;/div&gt;
+<pre><code class="lang-html">    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span> ngsReveal&gt;..&lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
 <h5 id="with-custom-options-">With Custom Options:</h5>
 <p>You can also pass in a custom configuration object to the directive.</p>
-<pre><code class="lang-html">    &lt;div class=&quot;item&quot; [ngsReveal]=&quot;{{ '{' }} reset: true}&quot; &gt;..&lt;/div&gt;
+<pre><code class="lang-html">    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span> [ngsReveal]=<span class="hljs-string">"{{ '{' }} reset: true}"</span> &gt;..&lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
 <p>This will override the default configuration used when revealing this particular element.
 When no configuration is passed in, the directive uses the default configuration defined at component or at application level.</p>
@@ -67,22 +67,22 @@ When no configuration is passed in, the directive uses the default configuration
 <p><strong>Note:</strong> The value is a list of CSS selectors (comma-separated).</p>
 </blockquote>
 <h5 id="basic-usage-">Basic Usage:</h5>
-<pre><code class="lang-html">    &lt;div class=&quot;itemset&quot; ngsRevealSet [ngsSelector]=&quot;&#39;.item&#39;&quot;&gt;
-        &lt;div class=&quot;item item1&quot;&gt;Item 1 &lt;/div&gt;
-        &lt;div class=&quot;item item2&quot;&gt;Item 2 &lt;/div&gt;
-        &lt;div class=&quot;item item3&quot;&gt;Item 3 &lt;/div&gt;
-        &lt;div class=&quot;item item4&quot;&gt;Item 4 &lt;/div&gt;
-        &lt;div class=&quot;item5&quot;&gt;Item 5 (will not be animated)&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code class="lang-html">    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"itemset"</span> ngsRevealSet [ngsSelector]=<span class="hljs-string">"'.item'"</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item1"</span>&gt;Item <span class="hljs-number">1</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item2"</span>&gt;Item <span class="hljs-number">2</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item3"</span>&gt;Item <span class="hljs-number">3</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item4"</span>&gt;Item <span class="hljs-number">4</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item5"</span>&gt;Item <span class="hljs-number">5</span> (will <span class="hljs-keyword">not</span> be animated)&lt;/<span class="hljs-keyword">div</span>&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
 <h5 id="with-custom-options-">With Custom Options:</h5>
-<pre><code class="lang-html">    &lt;div class=&quot;itemset&quot; [ngsRevealSet]=&quot;{{ '{' }} reset:true}&quot; [ngsSelector]=&quot;&#39;.item&#39;&quot;&gt;
-        &lt;div class=&quot;item item1&quot;&gt;Item 1 &lt;/div&gt;
-        &lt;div class=&quot;item item2&quot;&gt;Item 2 &lt;/div&gt;
-        &lt;div class=&quot;item item3&quot;&gt;Item 3 &lt;/div&gt;
-        &lt;div class=&quot;item item4&quot;&gt;Item 4 &lt;/div&gt;
-        &lt;div class=&quot;item5&quot;&gt;Item 5 (will not be animated)&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code class="lang-html">    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"itemset"</span> [ngsRevealSet]=<span class="hljs-string">"{{ '{' }} reset:true}"</span> [ngsSelector]=<span class="hljs-string">"'.item'"</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item1"</span>&gt;Item <span class="hljs-number">1</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item2"</span>&gt;Item <span class="hljs-number">2</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item3"</span>&gt;Item <span class="hljs-number">3</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item4"</span>&gt;Item <span class="hljs-number">4</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item5"</span>&gt;Item <span class="hljs-number">5</span> (will <span class="hljs-keyword">not</span> be animated)&lt;/<span class="hljs-keyword">div</span>&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
 <p>Configuration options are the same as ScrollReveal JS <a href="https://github.com/jlmakes/scrollreveal#2-configuration">configuration object</a>. </p>
 <h5 id="sequentially-animated-items-">Sequentially animated items:</h5>
@@ -90,13 +90,13 @@ When no configuration is passed in, the directive uses the default configuration
 <blockquote>
 <p><strong>Note:</strong> The interval is the time until the next element in the sequence begins its reveal, which is separate from the time until the element’s animation completes. In this example, the sequence interval is 50 milliseconds.</p>
 </blockquote>
-<pre><code class="lang-html">    &lt;div class=&quot;itemset&quot; [ngsRevealSet]=&quot;{{ '{' }} reset:true}&quot; [ngsInterval]=&quot;50&quot; [ngsSelector]=&quot;&#39;.item&#39;&quot;&gt;
-        &lt;div class=&quot;item item1&quot;&gt;Item 1 &lt;/div&gt;
-        &lt;div class=&quot;item item2&quot;&gt;Item 2 &lt;/div&gt;
-        &lt;div class=&quot;item item3&quot;&gt;Item 3 &lt;/div&gt;
-        &lt;div class=&quot;item item4&quot;&gt;Item 4 &lt;/div&gt;
-        &lt;div class=&quot;item5&quot;&gt;Item 5 will not be animated)&lt;/div&gt;
-    &lt;/div&gt;
+<pre><code class="lang-html">    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"itemset"</span> [ngsRevealSet]=<span class="hljs-string">"{{ '{' }} reset:true}"</span> [ngsInterval]=<span class="hljs-string">"50"</span> [ngsSelector]=<span class="hljs-string">"'.item'"</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item1"</span>&gt;Item <span class="hljs-number">1</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item2"</span>&gt;Item <span class="hljs-number">2</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item3"</span>&gt;Item <span class="hljs-number">3</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item item4"</span>&gt;Item <span class="hljs-number">4</span> &lt;/<span class="hljs-keyword">div</span>&gt;
+        &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item5"</span>&gt;Item <span class="hljs-number">5</span> will <span class="hljs-keyword">not</span> be animated)&lt;/<span class="hljs-keyword">div</span>&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
 <h2 id="credits">Credits</h2>
 <p><code>ng2-scrollreveal</code> is built upon <a href="https://scrollrevealjs.org">ScrollReveal JS</a> by <strong>Julian Lloyd</strong>. Thanks to him for the great work!</p>
