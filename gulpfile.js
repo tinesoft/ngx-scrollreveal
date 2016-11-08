@@ -39,7 +39,7 @@ function platformPath(path) {
 }
 
 function webpackCallBack(taskName, gulpDone) {
-    return function(err, stats) {
+    return function (err, stats) {
         if (err) throw new gutil.PluginError(taskName, err);
         gutil.log(`[${taskName}]`, stats.toString({
             colors: true
@@ -56,42 +56,42 @@ function getPackageJsonVersion() {
 }
 
 // Cleaning Tasks
-gulp.task('clean:build', function() { return del('dist/'); });
-gulp.task('clean:lib', function() { return del('dist/lib'); });
-gulp.task('clean:doc', function() { return del('dist/doc'); });
-gulp.task('clean:demo', function() { return del('dist/demo'); });
+gulp.task('clean:build', function () { return del('dist/'); });
+gulp.task('clean:lib', function () { return del('dist/lib'); });
+gulp.task('clean:doc', function () { return del('dist/doc'); });
+gulp.task('clean:demo', function () { return del('dist/demo'); });
 
 // Transpiling & Building
 
-gulp.task('ngc', function(cb) {
+gulp.task('ngc', function (cb) {
     var executable = path.join(__dirname, platformPath('/node_modules/.bin/ngc'));
     exec(`${executable} -p ./src/lib/tsconfig-es2015.json`, (e) => {
         if (e) console.log(e);
         del('./dist/waste');
         cb();
-    }).stdout.on('data', function(data) { console.log(data); });
+    }).stdout.on('data', function (data) { console.log(data); });
 });
 
-gulp.task('umd', function(cb) {
+gulp.task('umd', function (cb) {
     // run webpack
     webpack(webpackConfig, webpackCallBack('webpack', cb));
 });
 
-gulp.task('npm', function() {
+gulp.task('npm', function () {
     var pkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
     var targetPkgJson = {};
     var fieldsToCopy = ['version', 'description', 'keywords', 'author', 'repository', 'license', 'bugs', 'homepage'];
 
     targetPkgJson['name'] = LIBRARY_NAME;
 
-    fieldsToCopy.forEach(function(field) { targetPkgJson[field] = pkgJson[field]; });
+    fieldsToCopy.forEach(function (field) { targetPkgJson[field] = pkgJson[field]; });
 
     targetPkgJson['main'] = `bundles/${LIBRARY_NAME}.min.js`;
     targetPkgJson['module'] = 'index.js';
     targetPkgJson['typings'] = 'index.d.ts';
 
     targetPkgJson.peerDependencies = {};
-    Object.keys(pkgJson.dependencies).forEach(function(dependency) {
+    Object.keys(pkgJson.dependencies).forEach(function (dependency) {
         targetPkgJson.peerDependencies[dependency] = `^${pkgJson.dependencies[dependency]}`;
     });
 
@@ -101,7 +101,7 @@ gulp.task('npm', function() {
 });
 
 
-gulp.task('typedoc', function() {
+gulp.task('typedoc', function () {
     return gulp
         .src(['src/lib/**/*.ts', '!src/lib/**/*.spec.ts'])
         .pipe(typedoc({
@@ -136,19 +136,19 @@ gulp.task('build:demo', ['md'], shell.task('ng build --prod'));
 
 gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username=tinesoft', { interactive: true }));
 
-gulp.task('md', function() {
+gulp.task('md', function () {
     return gulp.src('./src/demo/app/getting-started/getting-started.component.hbs')
-        .pipe(tap(function(file) {
+        .pipe(tap(function (file) {
             var template = Handlebars.compile(file.contents.toString());
 
             return gulp.src('./README.md')
                 // convert from markdown
                 .pipe(markdown({
-                    highlight: function(code) {
+                    highlight: function (code) {
                         return HighlightJS.highlightAuto(code).value;
                     }
                 }))
-                .pipe(tap(function(file) {
+                .pipe(tap(function (file) {
                     // file is the converted HTML from the markdown
                     // set the contents to the contents property on data
                     var data = { README_md: file.contents.toString() };
@@ -166,7 +166,7 @@ gulp.task('md', function() {
 });
 
 // Release Tasks
-gulp.task('changelog', function() {
+gulp.task('changelog', function () {
     return gulp.src('CHANGELOG.md', { buffer: false })
         .pipe(conventionalChangelog({
             preset: 'angular', releaseCount: 1
@@ -174,7 +174,7 @@ gulp.task('changelog', function() {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('github-release', function(done) {
+gulp.task('github-release', function (done) {
     conventionalGithubReleaser({
         type: 'oauth',
         token: process.env.GITHUB_TOKEN
@@ -183,7 +183,7 @@ gulp.task('github-release', function(done) {
         done);
 });
 
-gulp.task('bump-version', function() {
+gulp.task('bump-version', function () {
     // We hardcode the version change type to 'patch' but it may be a good idea to
     // use minimist (https://www.npmjs.com/package/minimist) to determine with a
     // command argument whether you are doing a 'major', 'minor' or a 'patch' change.
@@ -192,20 +192,20 @@ gulp.task('bump-version', function() {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('commit-changes', function() {
+gulp.task('commit-changes', function () {
     var version = getPackageJsonVersion();
     return gulp.src('.')
         .pipe(git.add())
         .pipe(git.commit(`chore(release): bump version number to ${version}`));
 });
 
-gulp.task('push-changes', function(cb) {
+gulp.task('push-changes', function (cb) {
     git.push('origin', 'master', cb);
 });
 
-gulp.task('create-new-tag', function(cb) {
+gulp.task('create-new-tag', function (cb) {
     var version = getPackageJsonVersion();
-    git.tag(version, `chore(release): create tag for version ${version}`, function(error) {
+    git.tag(version, `chore(release): create tag for version ${version}`, function (error) {
         if (error) {
             return cb(error);
         }
@@ -214,7 +214,7 @@ gulp.task('create-new-tag', function(cb) {
 
 });
 
-gulp.task('release', function(callback) {
+gulp.task('release', function (callback) {
     runSequence(
         'bump-version',
         'changelog',
@@ -222,7 +222,7 @@ gulp.task('release', function(callback) {
         'push-changes',
         'create-new-tag',
         'github-release',
-        function(error) {
+        function (error) {
             if (error) {
                 console.log(error.message);
             } else {
@@ -232,10 +232,10 @@ gulp.task('release', function(callback) {
         });
 });
 
-gulp.task('publish', function(done) {
+gulp.task('publish', function (done) {
     // run npm publish terminal command 
     exec('npm publish ./dist/lib',
-        function(error, stdout, stderr) {
+        function (error, stdout, stderr) {
             if (stderr) {
                 gutil.log(gutil.colors.red(stderr));
             } else if (stdout) {
@@ -256,14 +256,14 @@ gulp.task('test', shell.task('ng test --watch false'));
 
 gulp.task('lint', shell.task('ng lint'));
 
-gulp.task('build:lib', function(done) {
+gulp.task('build:lib', function (done) {
     runSequence(/*'lint', 'enforce-format', 'ddescribe-iit', */ 'clean:lib', 'test', 'ngc', 'umd', 'npm', done);
 });
 
 gulp.task(
-    'deploy-demo', function(done) { runSequence('clean:demo', 'build:demo', 'push:demo', done); });
+    'deploy-demo', function (done) { runSequence('clean:demo', 'build:demo', 'push:demo', done); });
 
 gulp.task(
-    'deploy-lib', function(done) { runSequence('clean:lib', 'build:lib', 'release', 'publish', done); });
+    'deploy-lib', function (done) { runSequence('clean:lib', 'build:lib', 'release', 'publish', done); });
 
-gulp.task('default', function(done) { runSequence('lint', /*'enforce-format', 'ddescribe-iit', */'test', done); });
+gulp.task('default', function (done) { runSequence('lint', /*'enforce-format', 'ddescribe-iit', */'test', done); });
