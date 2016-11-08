@@ -2,7 +2,8 @@
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
 module.exports = function (config) {
-  config.set({
+  var configuration = 
+  {
     basePath: '',
     frameworks: ['jasmine', 'angular-cli'],
     plugins: [
@@ -11,6 +12,13 @@ module.exports = function (config) {
       require('karma-remap-istanbul'),
       require('angular-cli/plugins/karma')
     ],
+    customLaunchers: {
+      // chrome setup for travis CI
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     files: [
       'node_modules/scrollreveal/dist/scrollreveal.js',// FIXME TKO: bug in cli?
       { pattern: './src/demo/test.ts', watched: false }
@@ -37,5 +45,12 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false
-  });
+  };
+  
+  if(process.env.TRAVIS){
+    configuration.browsers = ['Chrome_travis_ci'];
+    configuration.singleRun = true;
+  }
+
+config.set(configuration);
 };
