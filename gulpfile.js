@@ -264,6 +264,6 @@ gulp.task(
     'deploy-demo', function (done) { runSequence('clean:demo', 'build:demo', 'push:demo', done); });
 
 gulp.task(
-    'deploy-lib', function (done) { runSequence('clean:lib', 'build:lib', 'release', 'publish', done); });
+    'deploy-lib', function (done) { runSequence('clean:lib', 'test', 'ngc', 'umd', 'release', 'npm', 'publish', done); });
 
 gulp.task('default', function (done) { runSequence('lint', /*'enforce-format', 'ddescribe-iit', */'test', done); });
