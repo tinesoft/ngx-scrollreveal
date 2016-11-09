@@ -177,7 +177,7 @@ gulp.task('changelog', function () {
 gulp.task('github-release', function (done) {
     conventionalGithubReleaser({
         type: 'oauth',
-        token: process.env.GITHUB_TOKEN
+        token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
     },
         { preset: 'angular' },
         done);
