@@ -103,10 +103,10 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 
 ```html
     <div class="itemset" ngsRevealSet [ngsSelector]="'.item'">
-        <div class="item item1">Item 1 </div>
-        <div class="item item2">Item 2 </div>
-        <div class="item item3">Item 3 </div>
-        <div class="item item4">Item 4 </div>
+        <div class="item item1">Item 1</div>
+        <div class="item item2">Item 2</div>
+        <div class="item item3">Item 3</div>
+        <div class="item item4">Item 4</div>
         <div class="item5">Item 5 (will not be animated)</div>
     </div>
 ```
@@ -115,10 +115,10 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 
 ```html
     <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsSelector]="'.item'">
-        <div class="item item1">Item 1 </div>
-        <div class="item item2">Item 2 </div>
-        <div class="item item3">Item 3 </div>
-        <div class="item item4">Item 4 </div>
+        <div class="item item1">Item 1</div>
+        <div class="item item2">Item 2</div>
+        <div class="item item3">Item 3</div>
+        <div class="item item4">Item 4</div>
         <div class="item5">Item 5 (will not be animated)</div>
     </div>
 ```
@@ -132,11 +132,11 @@ Child items inside the parent set can be sequentially animated, by adding the `[
 
 ```html
     <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsInterval]="50" [ngsSelector]="'.item'">
-        <div class="item item1">Item 1 </div>
-        <div class="item item2">Item 2 </div>
-        <div class="item item3">Item 3 </div>
-        <div class="item item4">Item 4 </div>
-        <div class="item5">Item 5 will not be animated)</div>
+        <div class="item item1">Item 1</div>
+        <div class="item item2">Item 2</div>
+        <div class="item item3">Item 3</div>
+        <div class="item item4">Item 4</div>
+        <div class="item5">Item 5 (will not be animated)</div>
     </div>
 
 ```

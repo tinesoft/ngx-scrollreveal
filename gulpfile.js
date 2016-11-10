@@ -25,8 +25,8 @@ var typedoc = require('gulp-typedoc');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var Handlebars = require('handlebars');
-var HighlightJS = require('highlight.js');
-var markdown = require('gulp-markdown');
+var Highlights = require('highlights');
+var MarkdownIt = require('markdown-it');
 var tap = require('gulp-tap');
 
 
@@ -136,17 +136,27 @@ gulp.task('build:demo', ['md'], shell.task('ng build --prod'));
 
 gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username=tinesoft', { interactive: true }));
 
+highligther = new Highlights();
+markdowniter = new MarkdownIt({
+        highlight: function (code,lang) {
+            var highlighted =
+                highligther.highlightSync({
+                fileContents: code,
+                scopeName: 'source.js'
+            });
+            return highlighted;
+        }
+});
 gulp.task('md', function () {
     return gulp.src('./src/demo/app/getting-started/getting-started.component.hbs')
         .pipe(tap(function (file) {
             var template = Handlebars.compile(file.contents.toString());
 
             return gulp.src('./README.md')
+                .pipe(tap(function(file){
                 // convert from markdown
-                .pipe(markdown({
-                    highlight: function (code) {
-                        return HighlightJS.highlightAuto(code).value;
-                    }
+                    var mdContents = file.contents.toString();
+                    file.contents = new Buffer(markdowniter.render(mdContents),'utf-8');
                 }))
                 .pipe(tap(function (file) {
                     // file is the converted HTML from the markdown
@@ -157,7 +167,7 @@ gulp.task('md', function () {
                     // replace the file contents with the new HTML created from the Handlebars template + data object that contains the HTML made from the markdown conversion
                     file.contents = new Buffer(html, "utf-8");
                 }))
-                .pipe(replace(/(<h1 id[^>]+>[^]+?)(<h2 id="installation">)/, '$2'))// strips everything between start & '<h2 id="installation">'
+                .pipe(replace(/(<h1>ng2-scrollreveal[^]+?)(<h2>Dependencies<\/h2>)/, '$2'))// strips everything between start & '<h2 id="installation">'
                 .pipe(replace('{', "{{ '{' }}")) // escapes '{' to comply with  angular parser
                 .pipe(rename('getting-started.component.html'))
                 .pipe(gulp.dest('./src/demo/app/getting-started'));
