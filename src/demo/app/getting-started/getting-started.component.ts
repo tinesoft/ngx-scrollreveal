@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title }     from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-getting-started',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GettingStartedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Getting Started | ng2-scrollreveal');
   }
 
 }
