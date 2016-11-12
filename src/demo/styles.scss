@@ -1,16 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
-.jumbotron {
-  margin-top: 3.4rem;
-  margin-bottom: 0rem;
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/include-media/dist/include-media";
+// 'include-media' plugging into Bootstrap 4's Grid Breakpoints map
 
-  h1{
-      font-size:3.8rem;
-      margin-bottom: 1.8rem;
-  }
-
-  p {
-      font-size: 1.4rem;
-  }
+$breakpoints: $grid-breakpoints;
+@include media("<md") {
+    .jumbotron {
+        margin-top: 3.4rem;
+        margin-bottom: 0rem;
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 1.0rem;
+            margin-bottom: 1.4rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+    }
 }
 
+@include media(">=md") {
+    .jumbotron {
+        margin-top: 3.4rem;
+        margin-bottom: 0rem;
+        h1 {
+            font-size: 3.6rem;
+            margin-top: 1.0rem;
+            margin-bottom: 1.8rem;
+        }
+        p {
+            font-size: 1.4rem;
+        }
+    }
+}

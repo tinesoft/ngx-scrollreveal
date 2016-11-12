@@ -70,6 +70,7 @@
     "gulp-util": "^3.0.7",
     "handlebars": "^4.0.5",
     "highlights": "^1.4.1",
+    "include-media": "^1.4.8",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
