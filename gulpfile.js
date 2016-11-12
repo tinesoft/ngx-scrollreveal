@@ -28,6 +28,8 @@ var Handlebars = require('handlebars');
 var Highlights = require('highlights');
 var MarkdownIt = require('markdown-it');
 var tap = require('gulp-tap');
+var coveralls = require('gulp-coveralls');
+
 
 
 
@@ -138,14 +140,14 @@ gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username=tinesoft', {
 
 highligther = new Highlights();
 markdowniter = new MarkdownIt({
-        highlight: function (code,lang) {
-            var highlighted =
-                highligther.highlightSync({
+    highlight: function (code, lang) {
+        var highlighted =
+            highligther.highlightSync({
                 fileContents: code,
                 scopeName: 'source.js'
             });
-            return highlighted;
-        }
+        return highlighted;
+    }
 });
 gulp.task('md', function () {
     return gulp.src('./src/demo/app/getting-started/getting-started.component.hbs')
@@ -153,10 +155,10 @@ gulp.task('md', function () {
             var template = Handlebars.compile(file.contents.toString());
 
             return gulp.src('./README.md')
-                .pipe(tap(function(file){
-                // convert from markdown
+                .pipe(tap(function (file) {
+                    // convert from markdown
                     var mdContents = file.contents.toString();
-                    file.contents = new Buffer(markdowniter.render(mdContents),'utf-8');
+                    file.contents = new Buffer(markdowniter.render(mdContents), 'utf-8');
                 }))
                 .pipe(tap(function (file) {
                     // file is the converted HTML from the markdown
@@ -262,7 +264,12 @@ gulp.task('publish', function (done) {
 // Public Tasks
 gulp.task('clean', ['clean:lib', 'clean:demo', 'clean:demo']);
 
-gulp.task('test', shell.task('ng test --watch false'));
+gulp.task('test', shell.task('ng test --watch=false --code-coverage=true'));
+
+gulp.task('coveralls', function () {
+    return gulp.src('./coverage/coverage.lcov')
+        .pipe(coveralls());
+});
 
 gulp.task('lint', shell.task('ng lint'));
 

@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/ng2-scrollreveal.svg)](https://badge.fury.io/js/ng2-scrollreveal)
 [![Build Status](https://travis-ci.org/tinesoft/ng2-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng2-scrollreveal)
+[![Coverage Status](https://coveralls.io/repos/github/tinesoft/ng2-scrollreveal/badge.svg?branch=master)](https://coveralls.io/github/tinesoft/ng2-scrollreveal?branch=master)
 [![devDependency Status](https://david-dm.org/tinesoft/ng2-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ng2-scrollreveal#info=devDependencies)
 
 ScrollReveal JS is a great library that allows easy scroll animations for web and mobile browsers.

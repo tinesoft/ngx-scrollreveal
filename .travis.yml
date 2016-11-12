@@ -21,3 +21,5 @@ before_script:
 
 script: gulp test
 
+after_success: gulp coveralls
+
