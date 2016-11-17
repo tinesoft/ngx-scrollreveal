@@ -13,7 +13,7 @@ View all the directives in action at https://tinesoft.github.io/ng2-scrollreveal
 
 ## Dependencies
 * [Angular 2](https://angular.io) (*requires* Angular 2 or higher, tested with 2.0.0)
-* [ScrollReveal](https://scrollrevealjs.org) (tested with 3.3.2)
+* [ScrollReveal](https://scrollrevealjs.org) (*requires* ScrollReveal 3.2 or higher, tested with 3.2.0)
 
 ## Installation
 Install above dependencies via *npm*. In particular for `ScrollReveal JS`, run:
