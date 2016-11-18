@@ -21,12 +21,41 @@ Install above dependencies via *npm*. In particular for `ScrollReveal JS`, run:
 npm install --save scrollreveal
 ```
 
+---
+##### Angular-CLI
 >**Note**: If you are using `angular-cli` to build your app, make sure that `scrollreveal` is properly listed as a [global library](https://github.com/angular/angular-cli#global-library-installation), by editing your `angular-cli.json` as such:
 ```
       "scripts": [
         "../node_modules/scrollreveal/dist/scrollreveal.js"
       ],
 ```
+
+##### SystemJS
+>**Note**:If you are using `SystemJS`, you should adjust your configuration to point to the UMD bundle.
+In your systemjs config file, `map` needs to tell the System loader where to look for `ng2-scrollreveal`:
+```js
+map: {
+  'ng2-scrollreveal': 'node_modules/ng2-scrollreveal/bundles/ng2-scrollreveal.min.js',
+}
+```
+In your systemjs config file, `meta` needs to tell the System loader how to load `scrollreveal`:
+```js
+    meta: {
+    './node_modules/scrollreveal/dist/scrollreveal.min.js': {
+            format: 'amd'
+        }
+    }
+```
+In your index.html file, add script tag to load  `scrollreveal` globally:
+```html
+    <!-- 1. Configure SystemJS -->
+    <script src="system.config.js"></script>
+    <!-- 2. Add scrollreveal dependency-->
+    <script src="node_modules/scrollreveal/dist/scrollreveal.min.js"></script>
+```
+
+---
+
 
 Now install `ng2-scrollreveal` via:
 ```shell
