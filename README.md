@@ -21,6 +21,12 @@ Install above dependencies via *npm*. In particular for `ScrollReveal JS`, run:
 npm install --save scrollreveal
 ```
 
+To avoid compilation warnings during development, you can also install the typings for `ScrollReveal JS` :
+```shell
+npm install --save-dev @types/scrollreveal
+```
+
+
 ---
 ##### Angular-CLI
 >**Note**: If you are using `angular-cli` to build your app, make sure that `scrollreveal` is properly listed as a [global library](https://github.com/angular/angular-cli#global-library-installation), by editing your `angular-cli.json` as such:
