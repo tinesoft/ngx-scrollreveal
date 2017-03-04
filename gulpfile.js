@@ -33,7 +33,7 @@ var coveralls = require('gulp-coveralls');
 
 
 
-const LIBRARY_NAME = 'ng2-scrollreveal';
+const LIBRARY_NAME = 'ng-scrollreveal';
 
 //Helper functions
 function platformPath(path) {
@@ -97,7 +97,7 @@ gulp.task('npm', function () {
         targetPkgJson.peerDependencies[dependency] = `^${pkgJson.dependencies[dependency]}`;
     });
 
-    return gulp.src('README.md')
+    return gulp.src(['README.md', 'LICENSE', 'CHANGELOG.md'])
         .pipe(gulpFile('package.json', JSON.stringify(targetPkgJson, null, 2)))
         .pipe(gulp.dest('dist/lib'));
 });
@@ -121,7 +121,7 @@ gulp.task('typedoc', function () {
             module: 'commonjs',
 
             // Typedoc options
-            name: 'ng2-scrollreveal API Doc',
+            name: 'ng-scrollreveal API Doc',
             theme: 'default',
             out: './dist/doc',
             hideGenerator: true,
@@ -169,7 +169,7 @@ gulp.task('md', function () {
                     // replace the file contents with the new HTML created from the Handlebars template + data object that contains the HTML made from the markdown conversion
                     file.contents = new Buffer(html, "utf-8");
                 }))
-                .pipe(replace(/(<h1>ng2-scrollreveal[^]+?)(<h2>Dependencies<\/h2>)/, '$2'))// strips everything between start & '<h2 id="installation">'
+                .pipe(replace(/(<h1>ng-scrollreveal[^]+?)(<h2>Dependencies<\/h2>)/, '$2'))// strips everything between start & '<h2 id="installation">'
                 .pipe(replace('{', "{{ '{' }}")) // escapes '{' to comply with  angular parser
                 .pipe(rename('getting-started.component.html'))
                 .pipe(gulp.dest('./src/demo/app/getting-started'));
@@ -262,7 +262,7 @@ gulp.task('publish', function (done) {
 });
 
 // Public Tasks
-gulp.task('clean', ['clean:lib', 'clean:demo', 'clean:demo']);
+gulp.task('clean', ['clean:lib', 'clean:demo']);
 
 gulp.task('test', shell.task('ng test --watch=false --code-coverage=true'));
 

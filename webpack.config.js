@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const LIBRARY_NAME = 'ng2-scrollreveal';
+const LIBRARY_NAME = 'ng-scrollreveal';
 
 // Helper functions
 function root(args) {

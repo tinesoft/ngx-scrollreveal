@@ -1,15 +1,15 @@
-# ng2-scrollreveal - [Angular](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
+# ng-scrollreveal - [Angular](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
 
-[![npm version](https://badge.fury.io/js/ng2-scrollreveal.svg)](https://badge.fury.io/js/ng2-scrollreveal)
-[![Build Status](https://travis-ci.org/tinesoft/ng2-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng2-scrollreveal)
-[![Coverage Status](https://coveralls.io/repos/github/tinesoft/ng2-scrollreveal/badge.svg?branch=master)](https://coveralls.io/github/tinesoft/ng2-scrollreveal?branch=master)
-[![devDependency Status](https://david-dm.org/tinesoft/ng2-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ng2-scrollreveal#info=devDependencies)
+[![npm version](https://badge.fury.io/js/ng-scrollreveal.svg)](https://badge.fury.io/js/ng-scrollreveal)
+[![Build Status](https://travis-ci.org/tinesoft/ng-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng-scrollreveal)
+[![Coverage Status](https://coveralls.io/repos/github/tinesoft/ng-scrollreveal/badge.svg?branch=master)](https://coveralls.io/github/tinesoft/ng-scrollreveal?branch=master)
+[![devDependency Status](https://david-dm.org/tinesoft/ng-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ng-scrollreveal#info=devDependencies)
 
 ScrollReveal JS is a great library that allows easy scroll animations for web and mobile browsers.
 
 ## Demo
 
-View all the directives in action at https://tinesoft.github.io/ng2-scrollreveal
+View all the directives in action at https://tinesoft.github.io/ng-scrollreveal
 
 ## Dependencies
 * [Angular](https://angular.io) (*requires* Angular 2 or higher, tested with 2.0.0)
@@ -38,10 +38,10 @@ npm install --save-dev @types/scrollreveal
 
 ##### SystemJS
 >**Note**:If you are using `SystemJS`, you should adjust your configuration to point to the UMD bundle.
-In your systemjs config file, `map` needs to tell the System loader where to look for `ng2-scrollreveal`:
+In your systemjs config file, `map` needs to tell the System loader where to look for `ng-scrollreveal`:
 ```js
 map: {
-  'ng2-scrollreveal': 'node_modules/ng2-scrollreveal/bundles/ng2-scrollreveal.min.js',
+  'ng-scrollreveal': 'node_modules/ng-scrollreveal/bundles/ng-scrollreveal.min.js',
 }
 ```
 In your systemjs config file, `meta` needs to tell the System loader how to load `scrollreveal`:
@@ -63,19 +63,19 @@ In your index.html file, add script tag to load  `scrollreveal` globally:
 ---
 
 
-Now install `ng2-scrollreveal` via:
+Now install `ng-scrollreveal` via:
 ```shell
-npm install --save ng2-scrollreveal
+npm install --save ng-scrollreveal
 ```
 
 Once installed you need to import the main module:
 ```js
-import {NgsRevealModule} from 'ng2-scrollreveal';
+import {NgsRevealModule} from 'ng-scrollreveal';
 ```
 The only remaining part is to list the imported module in your application module. The exact method will be slightly
 different for the root (top-level) module for which you should end up with the code similar to (notice `NgsRevealModule.forRoot()`):
 ```js
-import {NgsRevealModule} from 'ng2-scrollreveal';
+import {NgsRevealModule} from 'ng-scrollreveal';
 
 @NgModule({
   declarations: [AppComponent, ...],
@@ -89,7 +89,7 @@ export class AppModule {
 Other modules in your application can simply import `NgsRevealModule`:
 
 ```js
-import {NgsRevealModule} from 'ng2-scrollreveal';
+import {NgsRevealModule} from 'ng-scrollreveal';
 
 @NgModule({
   declarations: [OtherComponent, ...],
@@ -179,4 +179,4 @@ Child items inside the parent set can be sequentially animated, by adding the `[
 
 ## Credits
 
-`ng2-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!
+`ng-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!
