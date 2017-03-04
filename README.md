@@ -1,4 +1,4 @@
-# ng2-scrollreveal - [Angular 2](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
+# ng2-scrollreveal - [Angular](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
 
 [![npm version](https://badge.fury.io/js/ng2-scrollreveal.svg)](https://badge.fury.io/js/ng2-scrollreveal)
 [![Build Status](https://travis-ci.org/tinesoft/ng2-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng2-scrollreveal)
@@ -12,7 +12,7 @@ ScrollReveal JS is a great library that allows easy scroll animations for web an
 View all the directives in action at https://tinesoft.github.io/ng2-scrollreveal
 
 ## Dependencies
-* [Angular 2](https://angular.io) (*requires* Angular 2 or higher, tested with 2.0.0)
+* [Angular](https://angular.io) (*requires* Angular 2 or higher, tested with 2.0.0)
 * [ScrollReveal](https://scrollrevealjs.org) (*requires* ScrollReveal 3.2 or higher, tested with 3.2.0)
 
 ## Installation
