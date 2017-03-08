@@ -113,6 +113,14 @@ amdefine@^1.0.0, amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-cli-ghpages:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/angular-cli-ghpages/-/angular-cli-ghpages-0.5.0.tgz#5166e6eb61c1380707e512c7912f991437750c99"
+  dependencies:
+    commander "~2.9.0"
+    denodeify "~1.2.1"
+    gh-pages "~0.12.0"
+
 angular2-template-loader@^0.6.0:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/angular2-template-loader/-/angular2-template-loader-0.6.2.tgz#c0d44e90fff0fac95e8b23f043acda7fd1c51d7c"
@@ -291,6 +299,12 @@ async@^1.4.0, async@^1.5.0, async@^1.5.2, async@1.x:
 async@^2.1.2:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/async/-/async-2.1.5.tgz#e587c68580994ac67fc56ff86d3ac56bdbe810bc"
+  dependencies:
+    lodash "^4.14.0"
+
+async@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.1.2.tgz#612a4ab45ef42a70cde806bad86ee6db047e8385"
   dependencies:
     lodash "^4.14.0"
 
@@ -739,6 +753,12 @@ coffee-script@1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.9.0.tgz#7492cbbc3f0361cc5d8865aff7237552ff33e1f7"
 
+collections@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/collections/-/collections-0.2.2.tgz#1f23026b2ef36f927eecc901e99c5f0d48fa334e"
+  dependencies:
+    weak-map "1.0.0"
+
 colors@^1.1.0, colors@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -755,7 +775,7 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.9.0, commander@2.9.x:
+commander@^2.9.0, commander@~2.9.0, commander@2.9.0, commander@2.9.x:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
@@ -1165,6 +1185,10 @@ delayed-stream@~1.0.0:
 delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
+
+denodeify@~1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/denodeify/-/denodeify-1.2.1.tgz#3a36287f5034e699e7577901052c2e6c94251631"
 
 depd@~1.1.0, depd@1.1.0:
   version "1.1.0"
@@ -1826,6 +1850,18 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gh-pages@~0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-0.12.0.tgz#d951e3ed98b85699d4b0418eb1a15b1a04988dc1"
+  dependencies:
+    async "2.1.2"
+    commander "2.9.0"
+    globby "^6.1.0"
+    graceful-fs "4.1.10"
+    q "1.4.1"
+    q-io "1.13.2"
+    rimraf "^2.5.4"
+
 git-raw-commits@^1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/git-raw-commits/-/git-raw-commits-1.1.2.tgz#a12d8492aeba2881802d700825ed81c9f39e6f2f"
@@ -1971,6 +2007,16 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+globby@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
+  dependencies:
+    array-union "^1.0.1"
+    glob "^7.0.3"
+    object-assign "^4.0.1"
+    pify "^2.0.0"
+    pinkie-promise "^2.0.0"
+
 globule@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/globule/-/globule-0.1.0.tgz#d9c8edde1da79d125a151b79533b978676346ae5"
@@ -1998,6 +2044,10 @@ graceful-fs@^4.1.2:
 graceful-fs@~1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-1.2.3.tgz#15a4806a57547cb2d2dbf27f42e89a8c3451b364"
+
+graceful-fs@4.1.10:
+  version "4.1.10"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.10.tgz#f2d720c22092f743228775c75e3612632501f131"
 
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
@@ -3302,6 +3352,10 @@ mime@^1.2.11, mime@^1.3.4, mime@1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
 
+mimeparse@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/mimeparse/-/mimeparse-0.1.4.tgz#dafb02752370fd226093ae3152c271af01ac254a"
+
 minimalistic-assert@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.0.tgz#702be2dda6b37f4836bcb3f5db56641b64a1d3d3"
@@ -3852,13 +3906,28 @@ punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
-q@^1.4.1:
+q-io@1.13.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/q-io/-/q-io-1.13.2.tgz#eea130d481ddb5e1aa1bc5a66855f7391d06f003"
+  dependencies:
+    collections "^0.2.0"
+    mime "^1.2.11"
+    mimeparse "^0.1.4"
+    q "^1.0.1"
+    qs "^1.2.1"
+    url2 "^0.0.0"
+
+q@^1.0.1, q@^1.4.1, q@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
 qjobs@^1.1.4:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/qjobs/-/qjobs-1.1.5.tgz#659de9f2cf8dcc27a1481276f205377272382e73"
+
+qs@^1.2.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-1.2.2.tgz#19b57ff24dc2a99ce1f8bdf6afcda59f8ef61f88"
 
 qs@~6.3.0:
   version "6.3.2"
@@ -4164,7 +4233,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.6.0, rimraf@2:
+rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.0, rimraf@2:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.1.tgz#c2338ec643df7a1b7fe5c54fa86f57428a55f33d"
   dependencies:
@@ -4882,6 +4951,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+url2@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/url2/-/url2-0.0.0.tgz#4eaabd1d5c3ac90d62ab4485c998422865a04b1a"
+
 user-home@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/user-home/-/user-home-1.1.1.tgz#2b5be23a32b63a7c9deb8d0f28d485724a3df190"
@@ -5001,6 +5074,10 @@ wbuf@^1.1.0, wbuf@^1.4.0:
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.2.tgz#d697b99f1f59512df2751be42769c1580b5801fe"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+weak-map@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/weak-map/-/weak-map-1.0.0.tgz#b66e56a9df0bd25a76bbf1b514db129080614a37"
 
 webpack-dev-middleware@^1.0.11, webpack-dev-middleware@^1.6.1, webpack-dev-middleware@^1.9.0:
   version "1.10.1"

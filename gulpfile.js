@@ -41,6 +41,8 @@ const MarkdownIt = require('markdown-it');
 const tap = require('gulp-tap');
 const yargs = require('yargs');
 
+const ghPages = require('angular-cli-ghpages');
+
 const highligther = new Highlights();
 const markdowniter = new MarkdownIt({
     highlight: function (code, lang) {
@@ -172,8 +174,7 @@ gulp.task('bundle', () => {
     const globals = {
         // Angular dependencies
         '@angular/core': 'ng.core',
-        '@angular/common': 'ng.common',
-        '@angular/http': 'ng.http'
+        '@angular/common': 'ng.common'
     };
 
     const rollupOptions = {
@@ -191,15 +192,13 @@ gulp.task('bundle', () => {
         moduleName: 'ngScrollreveal', //require for 'umd' bundling, must be a valid js identifier, see rollup/rollup/issues/584
         format: 'umd',
         globals,
-        dest: 'ng-scrollreveal.umd.js'
+        dest: `${LIBRARY_NAME}.umd.js`
     };
 
     return gulp.src(`${config.outputDir}/index.js`)
         .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
         .pipe(gulp.dest(`${config.outputDir}/bundles`));
 });
-
-
 
 //Demo Tasks
 gulp.task('md', () => {
@@ -232,15 +231,13 @@ gulp.task('md', () => {
 
 gulp.task('serve:demo', ['md'], shell.task('ng serve', { cwd: `${config.demoDir}` }));
 
-gulp.task('build:demo', ['md'], shell.task('ng build --prod --aot', { cwd: `${config.demoDir}` }));
+gulp.task('build:demo', ['md'], shell.task(`ng build --prod --aot --base-href https://tinesoft.github.io/${LIBRARY_NAME}/`, { cwd: `${config.demoDir}` }));
 
-gulp.task('push:demo', shell.task('ng gh-pages:deploy --gh-username=tinesoft', { cwd: `${config.demoDir}`, interactive: true }));
+gulp.task('push:demo', shell.task(`ngh --dir ${config.demoDir}/dist --message="chore(demo): :rocket: deploy new version"`));
 
 gulp.task('deploy:demo', (done) => { 
-        runSequence('clean:demo', 'build:demo', 'push:demo', done);
+        runSequence('build:demo', 'push:demo', done);
 });
-
-
 
 // Link 'dist' folder (create a local 'ng-scrollreveal' package that symlinks to it)
 // This way, we can have the demo project declare a dependency on 'ng-scrollreveal' (as it should)
@@ -264,7 +261,7 @@ gulp.task('compile', (cb) => {
 
 // Watch changes on *.ts files and Compile
 gulp.task('watch', () => {
-    gulp.watch([config.allTs, config.allHtml, config.allSass], ['compile']);
+    gulp.watch([config.allTs], ['compile']);
 });
 
 // Build the 'dist' folder (without publishing it to NPM)
@@ -309,7 +306,7 @@ gulp.task('push-changes', (cb) => {
 
 gulp.task('create-new-tag', (cb) => {
     let version = getPackageJsonVersion();
-    git.tag(version, `chore(release): create tag for version ${version}`, (error) => {
+    git.tag(version, `chore(release): :sparkles: :tada: create tag for version ${version}`, (error) => {
         if (error) {
             return cb(error);
         }
@@ -326,6 +323,8 @@ gulp.task('release', (cb) => {
         'push-changes',
         'create-new-tag',
         'github-release',
+        'publish',
+        'deploy:demo',
         (error) => {
             if (error) {
                 console.log(error.message);
