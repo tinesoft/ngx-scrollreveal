@@ -8,7 +8,7 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
     {
