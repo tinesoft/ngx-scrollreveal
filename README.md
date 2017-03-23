@@ -177,6 +177,33 @@ Child items inside the parent set can be sequentially animated, by adding the `[
 
 ```
 
+### Global Configuration 
+------------------------
+
+You can inject the config service, typically in your root component, and customize the values of its properties in order to provide default values for all the ng-reveal directives used in the application.
+
+```ts
+import {Component} from '@angular/core';
+import {NgsRevealConfig} from 'ng-scrollreveal';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  providers: [NgbTabsetConfig] // add NgsRevealConfig to the component providers
+})
+export class AppComponent {
+  constructor(config: NgsRevealConfig) {
+    // customize default values of ng-scrollreveal directives used by this component tree
+    config.duration = 5000;
+    config.easing = 'cubic-bezier(0.645, 0.045, 0.355, 1)';
+
+    //other options here
+  }
+}
+```
+
+
 ## Credits
 
 `ng-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!

@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 
 export const NGS_REVEAL_DIRECTIVES = [NgsRevealDirective, NgsRevealSetDirective];
 
+export { NgsRevealConfig } from './ngs-reveal-config';
 
 @NgModule({
   imports: [
