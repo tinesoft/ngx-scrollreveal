@@ -1,6 +1,6 @@
 {
   "name": "ng-scrollreveal",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "description": "Angular 2+ directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
   "keywords": [

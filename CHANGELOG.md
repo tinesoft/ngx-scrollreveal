@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tinesoft/ng-scrollreveal/compare/2.0.0...2.0.1) (2017-03-24)
+
+
+### Bug Fixes
+
+* **config:** export `NgsRevealConfig` service to allow global configuration ([a3c64cc](https://github.com/tinesoft/ng-scrollreveal/commit/a3c64cc)), closes [#6](https://github.com/tinesoft/ng-scrollreveal/issues/6)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tinesoft/ng-scrollreveal/compare/1.0.1...v2.0.0) (2017-03-08)
 
