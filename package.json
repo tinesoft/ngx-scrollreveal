@@ -22,23 +22,14 @@
   "bugs": {
     "url": "https://github.com/tinesoft/ng-scrollreveal/issues"
   },
-  "angular-cli": {},
-  "scripts": {
-    "start": "ng serve",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
-    "pree2e": "webdriver-manager update",
-    "e2e": "protractor",
-    "lib": "webpack --config webpack.config.js --progress"
-  },
   "private": true,
   "dependencies": {
     "@angular/common": "2.0.0",
     "@angular/core": "2.0.0",
-    "angular-cli-ghpages": "^0.5.0",
     "scrollreveal": "3.2.0"
   },
   "devDependencies": {
+    "angular-cli-ghpages": "^0.5.0",
     "@angular/compiler": "2.0.0",
     "@angular/compiler-cli": "0.6.2",
     "@angular/platform-browser": "2.0.0",
