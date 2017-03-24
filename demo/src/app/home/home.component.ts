@@ -1,5 +1,6 @@
+import { NgsRevealConfig } from 'ng-scrollreveal';
 import { Component, OnInit } from '@angular/core';
-import { Title }     from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,11 @@ import { Title }     from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private titleService:Title) { }
+  col1Config: NgsRevealConfig;
+
+  constructor(private titleService: Title) {
+    this.col1Config = {reset:true};
+   }
 
   ngOnInit() {
     this.titleService.setTitle('Home | ng-scrollreveal');

@@ -1,12 +1,20 @@
-<header class="navbar navbar-light navbar-fixed-top">
-	<div class="container">
-		<nav>
-			<a class="navbar-brand" [routerLink]="['/']">ng-scrollreveal</a>
-			<ul class="nav navbar-nav">
-				<li class="nav-item" [routerLinkActive]="['active']">
-					<a class="nav-link" [routerLink]="['/getting-started']">Getting Started</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-</header>
+
+<div class="container" style="padding-left: 0; padding-right: 0;">
+  <header class="navbar navbar-light navbar-fixed-top navbar-toggleable-md">
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" [routerLink]="['/']">ng-scrollreveal</a>
+
+    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/getting-started']">Getting Started</a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+</div>

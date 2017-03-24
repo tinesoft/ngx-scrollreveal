@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ng-scrollreveal"
+    "name": "ng-scrollreveal-demo"
   },
   "apps": [
     {
@@ -19,9 +19,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/scss/bootstrap.scss",
-        "../node_modules/font-awesome/scss/font-awesome.scss",
-        "highlight.scss",
         "styles.scss"
       ],
       "scripts": [

@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class NgScrollrevealPage {
+export class NgScrollrevealDemoPage {
   navigateTo() {
     return browser.get('/');
   }

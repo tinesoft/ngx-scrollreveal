@@ -1,10 +1,10 @@
-import { NgScrollrevealPage } from './app.po';
+import { NgScrollrevealDemoPage } from './app.po';
 
-describe('ng-scrollreveal App', () => {
-  let page: NgScrollrevealPage;
+describe('ng-scrollreveal-demo App', () => {
+  let page: NgScrollrevealDemoPage;
 
   beforeEach(() => {
-    page = new NgScrollrevealPage();
+    page = new NgScrollrevealDemoPage();
   });
 
   it('should display message saying app works', () => {

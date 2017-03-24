@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgsRevealModule } from 'ng-scrollreveal';
 
 import { AppRoutingModule } from './app-routing';
@@ -25,8 +24,7 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
         HttpModule,
         AppRoutingModule,
         AppSharedModule,
-        NgsRevealModule.forRoot(),
-        NgbModule.forRoot()
+        NgsRevealModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
