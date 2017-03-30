@@ -189,8 +189,7 @@ import {NgsRevealConfig} from 'ng-scrollreveal';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [NgbTabsetConfig] // add NgsRevealConfig to the component providers
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   constructor(config: NgsRevealConfig) {
