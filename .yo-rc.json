@@ -1,0 +1,27 @@
+{
+  "generator-ngx-library": {
+    "authorName": "Tine Kondo",
+    "authorEmail": "kondotine@gmail.com",
+    "githubUsername": "tinesoft",
+    "projectName": "ng-scrollreveal",
+    "projectVersion": "2.0.2",
+    "projectDescription": "Angular 2+ directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
+    "projectKeywords": [
+    "angular2",
+    "angular 2",
+    "scrollreveal",
+    "animation",
+    "animated",
+    "scroll",
+    "reveal"
+    ],
+    "moduleName": "ng-scrollreveal",
+    "ngVersion": "2.0.0",
+    "ngModules": [
+      "core",
+      "common"
+    ],
+    "useGreenkeeper": true,
+    "useCompodoc": true
+  }
+}

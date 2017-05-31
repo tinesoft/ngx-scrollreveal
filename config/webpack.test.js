@@ -1,5 +1,6 @@
 const helpers = require('./helpers');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const {CheckerPlugin} = require('awesome-typescript-loader');
 
 const getConfig = (hasCoverage, isTddMode) => {
@@ -22,7 +23,7 @@ const getConfig = (hasCoverage, isTddMode) => {
 
     let extraPlugins = [];
     if (isTddMode) {
-        extraPlugins.push(new CheckerPlugin());//to speed up compilation during TDD
+        extraPlugins.push(new CheckerPlugin());// to speed up compilation during TDD
     }
 
     return {
@@ -78,7 +79,11 @@ const getConfig = (hasCoverage, isTddMode) => {
                     test: /\.css$/,
                     loader: ['to-string-loader', 'css-loader']
                 },
-
+                {
+                  test: /\.(scss|sass)$/,
+                  use: ['to-string-loader', 'css-loader', 'sass-loader'],
+                  exclude: [helpers.root('src', 'scss')]
+                },
                 {
                     test: /\.html$/,
                     loader: 'raw-loader'
@@ -93,7 +98,14 @@ const getConfig = (hasCoverage, isTddMode) => {
                 options: {
                     // legacy options go here
                 }
-            })
+            }),
+            // Fixes linker warnings (see https://github.com/angular/angular/issues/11580)
+            new ContextReplacementPlugin(
+              // The (\\|\/) piece accounts for path separators in *nix and Windows
+              /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+              helpers.root('src'), // location of your src
+              {} // a map of your routes
+            ),
         ].concat(extraPlugins),
 
         performance: {
