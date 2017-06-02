@@ -19,8 +19,8 @@
       "node_modules/@types"
     ]
   },
-  "files": [
-    "./src/index.ts"
+  "include": [
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/tinesoft/ng-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng-scrollreveal)
 [![Coverage Status](https://coveralls.io/repos/github/tinesoft/ng-scrollreveal/badge.svg?branch=master)](https://coveralls.io/github/tinesoft/ng-scrollreveal?branch=master)
 [![devDependency Status](https://david-dm.org/tinesoft/ng-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ng-scrollreveal#info=devDependencies)
+[![Greenkeeper Badge](https://badges.greenkeeper.io/tinesoft/ng-scrollreveal.svg)](https://greenkeeper.io/)
 
 ScrollReveal JS is a great library that allows easy scroll animations for web and mobile browsers.
 
