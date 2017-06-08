@@ -32,7 +32,7 @@ export class NgsRevealConfig {
     // `<html>` is the default reveal container. You can pass either:
     // DOM Node, e.g. document.querySelector('.fooContainer')
     // Selector, e.g. '.fooContainer'
-    container?: HTMLDocument;
+    container?: Element | string;
 
     // true/false to control reveal animations on mobile.
     mobile?= true;
