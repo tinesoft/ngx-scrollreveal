@@ -1,3 +1,13 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/tinesoft/ng-scrollreveal/compare/2.0.2...2.0.3) (2017-06-08)
+
+
+### Bug Fixes
+
+* **config:** relax type of `config.container` into `Element | string` ([b8b56d0](https://github.com/tinesoft/ng-scrollreveal/commit/b8b56d0)), closes [#15](https://github.com/tinesoft/ng-scrollreveal/issues/15)
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/tinesoft/ng-scrollreveal/compare/2.0.1...2.0.2) (2017-03-24)
 
@@ -19,7 +29,7 @@
 
 
 <a name="2.0.0"></a>
-# [2.0.0](https://github.com/tinesoft/ng-scrollreveal/compare/1.0.1...v2.0.0) (2017-03-08)
+# [2.0.0](https://github.com/tinesoft/ng-scrollreveal/compare/1.0.1...2.0.0) (2017-03-08)
 
 
 ### Code Refactoring
@@ -34,8 +44,8 @@
 
 ### BREAKING CHANGES
 
-* all: rename UMD bundled file from `ng-scrollreveal.min.js` to `ng-scrollreveal.umd.js`
-* all: rename package from `ng2-scrollreveal` to `ng-scrollreveal` to conform with new Angular Naming Guidelines.
+* **all:** rename UMD bundled file from `ng-scrollreveal.min.js` to `ng-scrollreveal.umd.js`
+* **all:** rename package from `ng2-scrollreveal` to `ng-scrollreveal` to conform with new Angular Naming Guidelines.
 
 This only affect how you install and import the library (no actual breaking changes in code).
 
