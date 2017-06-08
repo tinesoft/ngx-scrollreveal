@@ -73,8 +73,6 @@ const markdowniter = new MarkdownIt({
 const LIBRARY_NAME = 'ng-scrollreveal';
 const config = {
   allTs: 'src/**/!(*.spec).ts',
-  allSass: 'src/**/*.scss',
-  allHtml: 'src/**/*.html',
   demoDir: 'demo/',
   outputDir: 'dist/',
   coverageDir: 'coverage/'
@@ -304,12 +302,12 @@ gulp.task('coveralls', (cb) => {
     ], cb);
 });
 
-// Lint, Sass to css, Inline templates & Styles and Compile
+// Lint and Compile
 gulp.task('compile', (cb) => {
   runSequence('lint', 'ngc', cb);
 });
 
-// Watch changes on (*.ts, *.sass, *.html) and Compile
+// Watch changes on (*.ts) and Compile
 gulp.task('watch', () => {
   gulp.watch([config.allTs], ['compile']);
 });
