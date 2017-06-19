@@ -44,7 +44,7 @@
     "@angular/platform-server": "2.0.0",
     "@compodoc/compodoc": "1.0.0-beta.10",
     "@types/jasmine": "2.5.41",
-    "@types/node": "6.0.58",
+    "@types/node": "8.0.0",
     "@types/scrollreveal": "0.0.2",
     "angular-cli-ghpages": "0.5.0",
     "angular2-template-loader": "0.6.0",
