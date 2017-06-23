@@ -34,7 +34,7 @@
   "dependencies": {
     "@angular/common": "2.0.0",
     "@angular/core": "2.0.0",
-    "scrollreveal": "3.3.5"
+    "scrollreveal": "3.3.6"
   },
   "devDependencies": {
     "@angular/compiler": "2.0.0",
