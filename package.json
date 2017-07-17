@@ -91,7 +91,7 @@
     "rxjs": "5.0.0-beta.12",
     "source-map-loader": "0.1.5",
     "to-string-loader": "1.1.5",
-    "travis-status": "1.0.0",
+    "travis-status": "2.0.0",
     "tslint": "3.15.1",
     "typescript": "2.0.3",
     "webpack": "2.2.0-rc.4",
