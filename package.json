@@ -69,7 +69,7 @@
     "gulp-util": "3.0.7",
     "handlebars": "4.0.6",
     "highlights": "1.4.1",
-    "html-loader": "0.4.4",
+    "html-loader": "0.5.0",
     "istanbul-instrumenter-loader": "1.2.0",
     "jasmine-core": "2.6.4",
     "karma": "1.2.0",
