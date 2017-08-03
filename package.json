@@ -82,7 +82,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.4",
     "lodash": "4.17.4",
-    "markdown-it": "8.1.0",
+    "markdown-it": "8.3.2",
     "pump": "1.0.2",
     "raw-loader": "0.5.1",
     "rollup-plugin-node-resolve": "2.0.0",
