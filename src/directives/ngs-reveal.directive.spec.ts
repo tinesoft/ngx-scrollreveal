@@ -3,11 +3,11 @@ import { DebugElement, Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { TestBed, ComponentFixture, inject } from '@angular/core/testing';
 
-import { NgsRevealModule } from './ngs-reveal.module';
-import { NgsRevealConfig } from './ngs-reveal-config';
-import { NgsRevealDirective } from './ngs-reveal.directive';
+import { NgsRevealModule } from '../ngs-reveal.module';
+import { NgsRevealConfig } from '../services/ngs-reveal-config';
+import { NgsRevealDirective } from '../directives/ngs-reveal.directive';
 
-import { not } from './test-helpers';
+import { not } from '../test-helpers';
 
 let fixture: ComponentFixture<TestComponent>;
 let itemsWithDirectiveOn: DebugElement[];

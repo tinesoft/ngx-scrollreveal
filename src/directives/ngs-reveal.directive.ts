@@ -1,7 +1,7 @@
 import { Directive, HostBinding, OnInit, ElementRef, Input } from '@angular/core';
-import { NgsRevealConfig } from './ngs-reveal-config';
-import { NgsRevealService } from './ngs-reveal.service';
-import { AbstractNgsRevealDirective } from './ngs-reveal-common';
+import { NgsRevealConfig } from '../services/ngs-reveal-config';
+import { NgsRevealService } from '../services/ngs-reveal.service';
+import { AbstractNgsRevealDirective } from './ngs-reveal-common.directive';
 
 /**
  * Directive to add 'ScrollReveal' functionality to a <b>single DOM element</b> in the page.
