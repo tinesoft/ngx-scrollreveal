@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ClipboardModule } from 'ngx-clipboard';
+import { NgsRevealModule } from 'ng-scrollreveal';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { PlaygroundComponent } from './playground/playground.component';
 
 
 @NgModule({
@@ -15,9 +15,10 @@ import { PlaygroundComponent } from './playground/playground.component';
         CommonModule,
         FormsModule,
         HomeRoutingModule,
-        NgbAccordionModule.forRoot(), 
+        NgbAccordionModule.forRoot(),
+        NgsRevealModule.forRoot(),
         ColorPickerModule,
         ClipboardModule],
-    declarations: [HomeComponent, PlaygroundComponent],
+    declarations: [HomeComponent],
 })
 export class HomeModule { }
