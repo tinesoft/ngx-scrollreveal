@@ -1,5 +1,15 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/tinesoft/ng-scrollreveal/compare/v2.0.3...v2.1.0) (2017-09-23)
+
+
+### Features
+
+* **uinversal:** add universal (server side rendering) support and update demo app ([6fac32b](https://github.com/tinesoft/ng-scrollreveal/commit/6fac32b)), closes [#50](https://github.com/tinesoft/ng-scrollreveal/issues/50)
+
+
+
 <a name="2.0.3"></a>
-## [2.0.3](https://github.com/tinesoft/ng-scrollreveal/compare/2.0.2...2.0.3) (2017-06-08)
+## [2.0.3](https://github.com/tinesoft/ng-scrollreveal/compare/2.0.2...v2.0.3) (2017-06-08)
 
 
 ### Bug Fixes
@@ -39,7 +49,7 @@
 
 ### Features
 
-* **all:** making [@IgorMinar](https://github.com/IgorMinar) happy all the way (it's just angular!) ([061c648](https://github.com/tinesoft/ng-scrollreveal/commit/061c648))
+* **all:** making @IgorMinar happy all the way (it's just angular!) ([061c648](https://github.com/tinesoft/ng-scrollreveal/commit/061c648))
 
 
 ### BREAKING CHANGES
