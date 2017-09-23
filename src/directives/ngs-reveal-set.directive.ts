@@ -1,7 +1,7 @@
 import { Directive, OnInit, OnChanges, SimpleChange, ElementRef, Input } from '@angular/core';
-import { NgsRevealConfig } from './ngs-reveal-config';
-import { NgsRevealService } from './ngs-reveal.service';
-import { AbstractNgsRevealDirective } from './ngs-reveal-common';
+import { NgsRevealConfig } from '../services/ngs-reveal-config';
+import { NgsRevealService } from '../services/ngs-reveal.service';
+import { AbstractNgsRevealDirective } from './ngs-reveal-common.directive';
 
 
 /**
@@ -9,7 +9,7 @@ import { AbstractNgsRevealDirective } from './ngs-reveal-common';
  * This directive is meant to be placed on the <b>parent node</b> that contains the child elements to reveal.
  * You can optionally add the `[ngsInterval]` attribute to reveal items sequentially, following the given interval(in milliseconds).
  * You can optionally add the `[ngsSync]` attribute to reveal new child elements that may have been added in the parent node asynchronously.
- * 
+ *
  */
 @Directive({
     selector: '[ngsRevealSet]'
@@ -17,7 +17,7 @@ import { AbstractNgsRevealDirective } from './ngs-reveal-common';
 export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements OnInit, OnChanges {
 
     /**
-     * Custom configuration to use when revealing this set of elements 
+     * Custom configuration to use when revealing this set of elements
      */
     @Input('ngsRevealSet')
     set _config(value: string | NgsRevealConfig) {

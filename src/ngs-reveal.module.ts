@@ -1,26 +1,28 @@
-import { NgsRevealConfig } from './ngs-reveal-config';
-import { NgsRevealService } from './ngs-reveal.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { NgsRevealDirective } from './ngs-reveal.directive';
-import { NgsRevealSetDirective } from './ngs-reveal-set.directive';
 import { CommonModule } from '@angular/common';
+import { WindowService, NgsRevealService, NgsRevealConfig } from './services/index';
+import { NgsRevealDirective, NgsRevealSetDirective } from './directives/index';
 
-export const NGS_REVEAL_DIRECTIVES = [NgsRevealDirective, NgsRevealSetDirective];
+export { WindowService, NgsRevealService, NgsRevealConfig } from './services/index';
 
-export { NgsRevealConfig } from './ngs-reveal-config';
+export { NgsRevealDirective, NgsRevealSetDirective } from './directives/index';
 
+/**
+ * Main module of the library
+ */
 @NgModule({
   imports: [
     CommonModule
   ],
-  exports: [NGS_REVEAL_DIRECTIVES],
-  declarations: [NGS_REVEAL_DIRECTIVES]
+  exports: [NgsRevealDirective, NgsRevealSetDirective],
+  declarations: [NgsRevealDirective, NgsRevealSetDirective]
 })
 export class NgsRevealModule {
+
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: NgsRevealModule,
-      providers: [NgsRevealConfig, NgsRevealService]
+      providers: [WindowService, NgsRevealService, NgsRevealConfig]
     };
   }
 }

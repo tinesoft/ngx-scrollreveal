@@ -8,23 +8,22 @@ import { NgsRevealModule } from 'ng-scrollreveal';
 import { AppRoutingModule } from './app-routing';
 import { AppSharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { HomeModule } from './home/home.module';
+
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        GettingStartedComponent,
-        HomeComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
+        NgsRevealModule.forRoot(),
         AppRoutingModule,
         AppSharedModule,
-        NgsRevealModule.forRoot()
+        HomeModule
     ],
     providers: [],
     bootstrap: [AppComponent]
