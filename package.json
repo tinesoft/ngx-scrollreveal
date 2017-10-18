@@ -53,7 +53,7 @@
     "conventional-github-releaser": "1.1.12",
     "core-js": "2.4.1",
     "del": "2.2.2",
-    "greenkeeper-lockfile": "1.8.1",
+    "greenkeeper-lockfile": "1.9.1",
     "gulp": "3.9.1",
     "gulp-bump": "2.7.0",
     "gulp-conventional-changelog": "1.1.3",
