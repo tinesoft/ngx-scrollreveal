@@ -90,7 +90,7 @@
     "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-sourcemaps": "0.4.2",
     "rollup-plugin-uglify": "1.0.1",
-    "run-sequence": "2.0.0",
+    "run-sequence": "2.1.0",
     "rxjs": "5.0.0-beta.12",
     "source-map-loader": "0.1.5",
     "travis-status": "1.0.0",
