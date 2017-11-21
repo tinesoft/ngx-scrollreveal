@@ -1,26 +1,25 @@
 
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NgsRevealModule } from 'ng-scrollreveal';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing';
+import { AppRoutingModule } from './app-routing.module';
 import { AppSharedModule } from './shared/shared.module';
-import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
-
-
+import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
-        BrowserModule,
+        // Add .withServerTransition() to support Universal rendering.
+        // The application ID can be any identifier which is unique on
+        // the page.
+        BrowserModule.withServerTransition({appId: 'ng-scrollreveal-demo-id'}),
         FormsModule,
         HttpModule,
-        NgsRevealModule.forRoot(),
         AppRoutingModule,
         AppSharedModule,
         HomeModule

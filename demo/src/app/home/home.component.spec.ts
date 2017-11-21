@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { HomeComponent } from './home.component';
-import { NgsRevealModule } from './../../../lib/ngs-reveal.module';
+import { NgsRevealModule } from 'ng-scrollreveal';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;

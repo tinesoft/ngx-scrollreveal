@@ -1,27 +1,46 @@
 {
   "generator-ngx-library": {
+    "version": "5.0.0",
     "authorName": "Tine Kondo",
     "authorEmail": "kondotine@gmail.com",
     "githubUsername": "tinesoft",
+    "githubRepoName": "ng-scrollreveal",
     "projectName": "ng-scrollreveal",
-    "projectVersion": "2.0.2",
+    "projectVersion": "2.1.0",
     "projectDescription": "Angular 2+ directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
     "projectKeywords": [
-    "angular2",
-    "angular 2",
-    "scrollreveal",
-    "animation",
-    "animated",
-    "scroll",
-    "reveal"
+      "ng",
+      "angular",
+      "scrollreveal",
+      "animation",
+      "animated",
+      "scroll",
+      "reveal"
     ],
-    "moduleName": "ng-scrollreveal",
     "ngVersion": "2.0.0",
     "ngModules": [
       "core",
       "common"
     ],
-    "useGreenkeeper": true,
-    "useCompodoc": true
+    "otherDependencies": ["scrollreveal"],
+    "dependenciesRange": ">=",
+    "ngPrefix": "ngs",
+    "useGreenkeeper": false,
+    "useCompodoc": true,
+    "enforceNgGitCommitMsg": true,
+    "skipDemo": false,
+    "skipSample": true,
+    "skipStyles": true,
+    "exclusions": [
+      "README.md",
+      "CHANGELOG.md",
+      "config/karma.conf",
+      "demo/src/app/**",
+      "demo/src/styles.scss",
+      "demo/src/assets/logo.svg",
+      "demo/src/index.html",
+      "demo/src/favicon.ico",
+      "src/**/*.*"
+    ]
   }
 }

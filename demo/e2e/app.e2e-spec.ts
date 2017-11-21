@@ -4,7 +4,7 @@ describe('ng-scrollreveal-demo App', () => {
   let page: NgScrollrevealDemoPage;
 
   beforeEach(() => {
-    page = new NgScrollrevealDemoPage();
+    page = new NgScrollrevealDemoPage ();
   });
 
   it('should display message saying app works', () => {

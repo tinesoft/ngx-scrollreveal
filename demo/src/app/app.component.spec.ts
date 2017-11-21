@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { AppSharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing';
-import { NgsRevealModule } from '../../lib/ngs-reveal.module';
+import { NgsRevealModule } from 'ng-scrollreveal';
 
 describe('App: Ng2Scrollreveal', () => {
   beforeEach(() => {
