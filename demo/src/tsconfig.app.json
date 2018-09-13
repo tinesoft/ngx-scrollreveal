@@ -6,12 +6,8 @@
     "module": "es2015",
     "types": [],
     "paths": {
-      "@angular/*": [
-        "../node_modules/@angular/*"
-      ],
-      "scrollreveal": [
-        "../node_modules/scrollreveal"
-      ]
+      "@angular/*": ["../node_modules/@angular/*"],
+      "scrollreveal": ["../node_modules/scrollreveal"]
     }
   },
   "exclude": [

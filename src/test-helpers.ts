@@ -1,5 +1,6 @@
+import { Predicate } from '@angular/core';
+
 /* tslint:disable:no-unused-variable */
-import { Predicate } from '@angular/core/src/facade/collection';
 
 
 export function not<T>(predicate: Predicate<T>): Predicate<T> {

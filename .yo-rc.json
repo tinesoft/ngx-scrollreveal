@@ -1,12 +1,12 @@
 {
   "generator-ngx-library": {
-    "version": "5.0.0",
+    "version": "6.2.1",
     "authorName": "Tine Kondo",
     "authorEmail": "kondotine@gmail.com",
     "githubUsername": "tinesoft",
     "githubRepoName": "ng-scrollreveal",
     "projectName": "ng-scrollreveal",
-    "projectVersion": "2.1.0",
+    "projectVersion": "2.2.0",
     "projectDescription": "Angular 2+ directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
     "projectKeywords": [
       "ng",
@@ -17,7 +17,7 @@
       "scroll",
       "reveal"
     ],
-    "ngVersion": "2.0.0",
+    "ngVersion": "6.0.0",
     "ngModules": [
       "core",
       "common"
@@ -35,12 +35,25 @@
       "README.md",
       "CHANGELOG.md",
       "config/karma.conf",
-      "demo/src/app/**",
-      "demo/src/styles.scss",
+      "demo/src/app/home/**",
+      "demo/src/app/getting-started/**",
       "demo/src/assets/logo.svg",
       "demo/src/index.html",
       "demo/src/favicon.ico",
-      "src/**/*.*"
+      "src/**/*.ts",
+      ".git/HEAD"
+    ],
+    "deleteExclusions": [
+      "README.md",
+      "CHANGELOG.md",
+      "config/karma.conf",
+      "demo/src/app/home/**",
+      "demo/src/app/getting-started/**",
+      "demo/src/assets/logo.svg",
+      "demo/src/index.html",
+      "demo/src/favicon.ico",
+      "src/**/*.ts",
+      ".git/HEAD"
     ]
   }
 }
