@@ -1,31 +1,36 @@
 /* tslint:disable:no-unused-variable */
-
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
-import { APP_BASE_HREF } from '@angular/common';
-
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { GettingStartedComponent } from './getting-started/getting-started.component';
-import { AppSharedModule } from './shared/shared.module';
-import { AppRoutingModule } from './app-routing';
-import { NgsRevealModule } from 'ng-scrollreveal';
+import { FooterComponent } from './shared/footer/footer.component';
 
-describe('App: Ng2Scrollreveal', () => {
-  beforeEach(() => {
+import { RouterOutletStubComponent, RouterLinkStubDirective } from '../testing/router-stubs';
+import { Observable, of } from 'rxjs';
+
+@Component({ selector: 'app-header', template: '' })
+class HeaderStubComponent { }
+
+class RouterStub {
+  events: Observable<Event> = of<Event>();
+}
+
+describe('AppComponent', () => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        AppSharedModule,
-        AppRoutingModule,
-        NgsRevealModule.forRoot()],
       declarations: [
         AppComponent,
-        GettingStartedComponent,
-        HomeComponent],
-      providers: [{ provide: APP_BASE_HREF, useValue: '/' }]
+        HeaderStubComponent,
+        FooterComponent,
+        RouterOutletStubComponent
+      ],
+      providers: [
+        { provide: Router, useClass: RouterStub }
+      ]
     });
-  });
+  }));
 
-  it('should create the app', async(() => {
+  it('should create', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();

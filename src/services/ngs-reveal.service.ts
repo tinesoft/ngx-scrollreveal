@@ -31,7 +31,7 @@ export class NgsRevealService {
 
     if (this.window) {// universal support
       // init the scrollReveal library with injected config
-      let srConfig: scrollReveal.ScrollRevealObjectOptions = Object.assign({}, config || {});
+      const srConfig: scrollReveal.ScrollRevealObjectOptions = Object.assign({}, config || {});
       this.sr = ScrollReveal(srConfig);
     }
   }

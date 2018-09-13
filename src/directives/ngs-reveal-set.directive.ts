@@ -48,7 +48,7 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements
 
     ngOnInit() {
         if (!this.ngsSelector && console) {
-            let item: string = this.elementRef.nativeElement ? this.elementRef.nativeElement.className : '';
+            const item: string = this.elementRef.nativeElement ? this.elementRef.nativeElement.className : '';
             console.error(`[ng-scrollreveal] You must set "[ngsSelector]" attribute on item '${item}' when using "ngsRevealSet"`);
             return;
         }
@@ -57,7 +57,7 @@ export class NgsRevealSetDirective extends AbstractNgsRevealDirective implements
 
     ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
 
-        let ngsSyncProp = 'ngsSync';
+        const ngsSyncProp = 'ngsSync';
         if (ngsSyncProp in changes
             && !changes[ngsSyncProp].isFirstChange()
             && !changes[ngsSyncProp].currentValue()) {

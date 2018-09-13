@@ -16,11 +16,10 @@ module.exports = function (config) {
       require('karma-mocha-reporter'),
       require('karma-jasmine-html-reporter'),
     ],
-
     customLaunchers: {
-      // chrome setup for travis CI
-      Chrome_travis_ci: {
-        base: 'Chrome',
+      // Chrome setup for CI (Travis, Docker, ...)
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       }
     },
@@ -66,7 +65,7 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    failOnEmptyTestSuite: true,
+    failOnEmptyTestSuite: false,
     autoWatch: false,
     browsers: ['Chrome'],
     singleRun: true
