@@ -34,7 +34,7 @@
   "dependencies": {
     "@angular/common": "6.0.0",
     "@angular/core": "6.0.0",
-    "scrollreveal": "3.3.6"
+    "scrollreveal": "4.0.2"
   },
   "devDependencies": {
     "@angular/animations": "6.0.0",
@@ -47,7 +47,6 @@
     "@types/jasmine": "2.5.41",
     "@types/lodash": "4.14.92",
     "@types/node": "8.0.44",
-    "@types/scrollreveal": "0.0.3",
     "angular-cli-ghpages": "0.5.2",
     "angular2-template-loader": "0.6.2",
     "ansi-colors": "2.0.1",
