@@ -13,24 +13,24 @@ ScrollReveal JS is a great library that allows easy scroll animations for web an
 View all the directives in action at https://tinesoft.github.io/ng-scrollreveal
 
 ## Dependencies
-* [Angular](https://angular.io) (*requires* Angular 2 or higher, tested with 2.0.0)
-* [ScrollReveal](https://scrollrevealjs.org) (*requires* ScrollReveal 3.2 or higher, tested with 3.2.0)
+
+* [Angular](https://angular.io) (*requires* Angular 6+, [v2.2.0](https://github.com/tinesoft/ng-scrollreveal/tree/v2.2.0) is the latest version for Angular < 6 )
+* [ScrollReveal](https://scrollrevealjs.org) (*requires* ScrollReveal 4 or higher, tested with 4.0.2)
 
 ## Installation
+
 Install above dependencies via *npm*. In particular for `ScrollReveal JS`, run:
+
 ```shell
 npm install --save scrollreveal
 ```
 
-To avoid compilation warnings during development, you can also install the typings for `ScrollReveal JS` :
-```shell
-npm install --save-dev @types/scrollreveal
-```
-
-
 ---
+
 ##### Angular-CLI
->**Note**: If you are using `angular-cli` to build your app, make sure that `scrollreveal` is properly listed as a [global library](https://github.com/angular/angular-cli#global-library-installation), by editing your `angular-cli.json` as such:
+
+>**Note**: If you are using `angular-cli` to build your app, make sure that `scrollreveal` is properly listed as a [global library](https://github.com/angular/angular-cli/wiki/stories-global-lib), by editing your `angular.json` as such:
+
 ```
       "scripts": [
         "../node_modules/scrollreveal/dist/scrollreveal.js"
@@ -38,14 +38,18 @@ npm install --save-dev @types/scrollreveal
 ```
 
 ##### SystemJS
+
 >**Note**:If you are using `SystemJS`, you should adjust your configuration to point to the UMD bundle.
 In your systemjs config file, `map` needs to tell the System loader where to look for `ng-scrollreveal`:
+
 ```js
 map: {
   'ng-scrollreveal': 'node_modules/ng-scrollreveal/bundles/ng-scrollreveal.min.js',
 }
 ```
+
 In your systemjs config file, `meta` needs to tell the System loader how to load `scrollreveal`:
+
 ```js
     meta: {
     './node_modules/scrollreveal/dist/scrollreveal.min.js': {
@@ -53,7 +57,9 @@ In your systemjs config file, `meta` needs to tell the System loader how to load
         }
     }
 ```
+
 In your index.html file, add script tag to load  `scrollreveal` globally:
+
 ```html
     <!-- 1. Configure SystemJS -->
     <script src="system.config.js"></script>
@@ -63,24 +69,33 @@ In your index.html file, add script tag to load  `scrollreveal` globally:
 
 ---
 
-
 Now install `ng-scrollreveal` via:
+
 ```shell
 npm install --save ng-scrollreveal
 ```
 
 Once installed you need to import the main module:
+
 ```js
 import {NgsRevealModule} from 'ng-scrollreveal';
 ```
+
 The only remaining part is to list the imported module in your application module. The exact method will be slightly
 different for the root (top-level) module for which you should end up with the code similar to (notice `NgsRevealModule.forRoot()`):
-```js
+
+```ts
 import {NgsRevealModule} from 'ng-scrollreveal';
+
+// you can optionally provide a config, to change default options used by the directives
+const config:NgsRevealConfig = {
+    easing: 'cubic-bezier(0.2, 0, 0.5, 1)',
+    distance: '20px'
+}
 
 @NgModule({
   declarations: [AppComponent, ...],
-  imports: [NgsRevealModule.forRoot(), ...],  
+  imports: [NgsRevealModule.forRoot(config), ...],  
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -105,7 +120,8 @@ export class OtherModule {
 The library is composed of two main directives: `ngsReveal` and `ngsRevealSet`.
 
 ### ngsReveal Directive
------------------------
+
+---
 
 Use this directive to reveal/hide a **single DOM element** upon scroll.
 
@@ -118,16 +134,19 @@ Use this directive to reveal/hide a **single DOM element** upon scroll.
 ##### With Custom Options:
 
 You can also pass in a custom configuration object to the directive.
+
 ```html
     <div class="item" [ngsReveal]="{ reset: true}" >..</div>
 ```
+
 This will override the default configuration used when revealing this particular element.
 When no configuration is passed in, the directive uses the default configuration defined at component or at application level.
 
-Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
+Configuration options are the same as ScrollReveal JS [configuration object](https://scrollrevealjs.org/guide/customization.html).
 
 ### ngsRevealSet Directive
----------------------------
+
+---
 
 Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 
@@ -136,7 +155,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 >**Note:** The value is a list of CSS selectors (comma-separated).
 
 
-##### Basic Usage:
+#### Basic Usage:
 
 ```html
     <div class="itemset" ngsRevealSet [ngsSelector]="'.item'">
@@ -148,7 +167,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
     </div>
 ```
 
-##### With Custom Options:
+#### With Custom Options:
 
 ```html
     <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsSelector]="'.item'">
@@ -159,9 +178,10 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
         <div class="item5">Item 5 (will not be animated)</div>
     </div>
 ```
+
 Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
 
-##### Sequentially animated items: 
+#### Sequentially animated items:
 
 Child items inside the parent set can be sequentially animated, by adding the `[ngsRevealInterval]` attribute.
 
@@ -178,8 +198,9 @@ Child items inside the parent set can be sequentially animated, by adding the `[
 
 ```
 
-### Global Configuration 
-------------------------
+### Global Configuration
+
+---
 
 You can inject the config service, typically in your root component, and customize the values of its properties in order to provide default values for all the ng-reveal directives used in the application.
 
@@ -204,6 +225,60 @@ export class AppComponent {
 }
 ```
 
+
+### Subscribing to ScrollReveal events
+
+---
+
+You can now subscribe to some events triggered by `ScrollReveal` before/after an element is revealed/reset.
+
+```ts
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgsRevealService } from 'ng-scrollreveal';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  providers: [NgbTabsetConfig] // add NgsRevealConfig to the component providers
+})
+export class AppComponent implements OnInit, OnDestroy{
+  constructor(private revealService: NgsRevealService) {
+  }
+  
+  ngOnInit() {
+    // subscribe to ScrollReveal observables to react to main events
+    this.beforeRevealSubscription = this.revealService.beforeReveal$.subscribe(
+      (el: HTMLElement) => {
+        console.log(`beforeReveal of '<${el.nodeName}>.${el.className}'`);
+      });
+
+    this.afterRevealSubscription = this.revealService.afterReveal$.subscribe(
+      (el: HTMLElement) => {
+        console.log(`afterReveal of '<${el.nodeName}>.${el.className}'`);
+    });
+
+    this.beforeResetSubscription = this.revealService.beforeReset$.subscribe(
+      (el: HTMLElement) => {
+        console.log(`beforeReset of '<${el.nodeName}>.${el.className}'`);
+    });
+
+    this.afterResetSubscription = this.revealService.afterReset$.subscribe(
+      (el: HTMLElement) => {
+        console.log(`afterReset of '<${el.nodeName}>.${el.className}'`);
+    });
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ScrollReveal observables to prevent memory leaks
+    this.beforeRevealSubscription.unsubscribe();
+    this.afterRevealSubscription.unsubscribe();
+    this.beforeResetSubscription.unsubscribe();
+    this.afterResetSubscription.unsubscribe();
+  }
+}
+
+```
 
 ## Credits
 

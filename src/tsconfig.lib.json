@@ -5,7 +5,7 @@
     "target": "es2015",
     "rootDir": "./",
     "baseUrl": "",
-    "types": [ "node", "scrollreveal"]
+    "types": [ "node"]
   },
   "files": [
     "./index.ts"

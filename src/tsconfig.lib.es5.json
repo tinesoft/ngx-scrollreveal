@@ -4,7 +4,7 @@
     "target": "es5",
     "outDir": "../tmp/lib-es5/",
     "baseUrl": "",
-    "types": ["node", "scrollreveal"]
+    "types": ["node"]
   },
   "files": [
     "./index.ts"

@@ -1,13 +1,67 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { NgsRevealConfig } from './ngs-reveal-config';
 import { WindowService } from './window.service';
+import { Subject, Observable } from 'rxjs';
 
+/**
+ * Type that represents the target that can be passed to `ScrollReveal().reveal()`.
+ */
+export type NgsRevealTarget = string | HTMLElement | HTMLCollection | Array<any>;
+
+/**
+ * Basic interface to represent `ScrollReveal` object.
+ */
+export interface NgsScrollReveal {
+  /**
+   * Controls whether or not to output help messages to the console when unexpected things occur at runtime.
+   */
+  debug?: boolean;
+  /**
+   * When `ScrollReveal` is instantiated on unsupported or disabled browsers,
+   * a non-operational instance is created with a `noop` property that returns `true`
+   */
+  noop: boolean;
+  /**
+   * Returns the version of `ScrollReveal` currently loaded on the page.
+   */
+  version?: string;
+  /**
+   * When non-resetting reveal animations complete, `ScrollReveal` will remove that elements event listeners, generated styles and metadata.
+   * In some cases (such as asynchronous sequences), you may not want this behavior.
+   * @param target the related element
+   */
+  clean(target: NgsRevealTarget): void;
+  /**
+   * Reverses the effects of all `reveal()` calls, removing all generated styles and event listeners, and clears the `ScrollReveal` store.
+   */
+  destroy(): void;
+  /**
+   * Invokes all previous `reveal()` calls (with the appropriate arguments), to capture any new elements added to the DOM.
+   */
+  sync(): void;
+  /**
+   * Registers the target element(s) with ScrollReveal, generates animation styles,
+   * and attaches event listeners to manage when styles are applied.
+   * @param target element to reveal
+   * @param options optionbs to use to reveal
+   * @param syncing whether or not to sync newly added elements (through an asyn call for e.g) with DOM
+   */
+  reveal(target: NgsRevealTarget, options?: NgsRevealConfig, syncing?: boolean): void;
+
+  isSupported(): boolean;
+}
+
+/**
+ * The function that returns the `ScrollReveal` instance.
+ * @param options Options to use instead of the defaults.
+ */
+declare function ScrollReveal(options?: NgsRevealConfig): NgsScrollReveal;
 
 /**
  * Marker interface to indicate that an object (typically `window`) has `scrollreveal` property.
  */
-export interface NgsHasScrollreveal {
-  scrollReveal: scrollReveal.ScrollRevealObject;
+export interface NgsHasScrollReveal {
+  scrollReveal: NgsScrollReveal;
 }
 
 /**
@@ -20,19 +74,65 @@ export class NgsRevealService {
 
   // the Magic Maker !
   // this objet is added to window scope when linking the scrollreveal.js library
-  private sr: scrollReveal.ScrollRevealObject;
+  private sr: NgsScrollReveal;
 
   // Window Object
-  private window: Window & NgsHasScrollreveal;
+  private window: Window & NgsHasScrollReveal;
 
+   // Observable  sources
+   private beforeRevealSource: Subject<HTMLElement>;
+   private afterRevealSource: Subject<HTMLElement>;
+   private beforeResetSource: Subject<HTMLElement>;
+   private afterResetSource: Subject<HTMLElement>;
+
+   /**
+    * Observable to subscribe to and get notified before an element is revealed.
+    */
+   beforeReveal$: Observable<HTMLElement>;
+   /**
+    * Observable to subscribe to and get notified after an element is revealed.
+    */
+   afterReveal$: Observable<HTMLElement>;
+   /**
+    * Observable to subscribe to and get notified before an element is reset.
+    */
+   beforeReset$: Observable<HTMLElement>;
+   /**
+    * Observable to subscribe to and get notified after an element is reset.
+    */
+   afterReset$: Observable<HTMLElement>;
 
   constructor(private config: NgsRevealConfig, private windowService: WindowService) {
-    this.window = windowService.nativeWindow;
+     // Observable  sources
+     this.beforeRevealSource = new Subject<HTMLElement>();
+     this.afterRevealSource = new Subject<HTMLElement>();
+     this.beforeResetSource = new Subject<HTMLElement>();
+     this.afterResetSource = new Subject<HTMLElement>();
 
+     // Observable  streams
+    this.beforeReveal$ = this.beforeRevealSource.asObservable();
+    this.afterReveal$ = this.afterRevealSource.asObservable();
+    this.beforeReset$ = this.beforeResetSource.asObservable();
+    this.afterReset$ = this.afterResetSource.asObservable();
+
+    this.window = windowService.nativeWindow;
+    this.init(config);
+  }
+
+  /**
+   * Initializes Cookie Consent with the provided configuration.
+   * @param config the configuration object
+   */
+  init(config: NgsRevealConfig): void {
     if (this.window) {// universal support
+      // Set callbacks hooks:
+      this.config.beforeReveal = (el: HTMLElement) => this.beforeRevealSource.next(el);
+      this.config.afterReveal = (el: HTMLElement) => this.afterRevealSource.next(el);
+      this.config.beforeReset = (el: HTMLElement) => this.beforeResetSource.next(el);
+      this.config.afterReset = (el: HTMLElement) => this.afterResetSource.next(el);
+
       // init the scrollReveal library with injected config
-      const srConfig: scrollReveal.ScrollRevealObjectOptions = Object.assign({}, config || {});
-      this.sr = ScrollReveal(srConfig);
+      this.sr = ScrollReveal(config);
     }
   }
 
@@ -41,12 +141,10 @@ export class NgsRevealService {
    * @param elementRef  a reference to the element to reveal
    * @param config      (optional) custom configuration to use when revealing this element
    */
-  reveal(elementRef: ElementRef, config?: NgsRevealConfig): scrollReveal.ScrollRevealObject {
-    if (!this.window) {// universal support
-      return null;
+  reveal(elementRef: ElementRef<HTMLElement>, config?: NgsRevealConfig): void {
+    if (this.window && elementRef.nativeElement) {
+      this.sr.reveal(elementRef.nativeElement, config);
     }
-    return elementRef.nativeElement ? // can be null, if app is running in a web worker for i.e
-      this.sr.reveal(elementRef.nativeElement, config) : this.sr;
   }
 
   /**
@@ -56,12 +154,11 @@ export class NgsRevealService {
    * @param interval          (optional) interval in milliseconds, to animate child elemnts sequentially
    * @param config            (optional) custom configuration to use when revealing this set of elements
    */
-  revealSet(parentElementRef: ElementRef, selector: string, interval?: number, config?: NgsRevealConfig): scrollReveal.ScrollRevealObject {
-    if (!this.window) {// universal support
-      return null;
+  revealSet(parentElementRef: ElementRef<HTMLElement>, selector: string, interval?: number, config?: NgsRevealConfig): void {
+    if (this.window && parentElementRef.nativeElement) {
+      const options = { ...config, interval: interval};
+      this.sr.reveal(selector, options);
     }
-    return parentElementRef.nativeElement ? // can be null, if app is running in a web worker for i.e
-      this.sr.reveal(selector, config, interval) : this.sr;
   }
 
   /**
@@ -70,6 +167,15 @@ export class NgsRevealService {
   sync(): void {
     if (this.window) {// universal support
       this.sr.sync();
+    }
+  }
+
+  /**
+   * Reverses the effects of all `reveal()` calls, removing all generated styles and event listeners, and clears the `ScrollReveal` store.
+   */
+  destroy(): void {
+    if (this.window) {
+      this.sr.destroy();
     }
   }
 
