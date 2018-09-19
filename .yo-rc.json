@@ -7,7 +7,7 @@
     "githubRepoName": "ng-scrollreveal",
     "projectName": "ng-scrollreveal",
     "projectVersion": "2.2.0",
-    "projectDescription": "Angular 2+ directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
+    "projectDescription": "Angular directives for ScrollReveal : a JavaScript library for easily animating elements as they enter/leave the viewport.",
     "projectKeywords": [
       "ng",
       "angular",
