@@ -15,4 +15,108 @@ describe('Service: NgsReveal', () => {
   it('should create the service instance...', inject([NgsRevealService], (service: NgsRevealService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should set callbacks on provided config when calling init()', inject([NgsRevealService], (service: NgsRevealService) => {
+    
+    let config:NgsRevealConfig = { delay: 100};
+
+    service.init(config);
+
+    expect(typeof (config.beforeReveal)).toEqual('function');
+    expect(typeof (config.afterReveal)).toEqual('function');
+    expect(typeof (config.beforeReset)).toEqual('function');
+    expect(typeof (config.afterReset)).toEqual('function');
+  }));
+
+  it('should emit beforeReveal$ event when calling beforeReveal() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+
+    let config:NgsRevealConfig = { delay: 100};
+
+    service.init(config);
+
+    let dummyElement1 = document.createElement('div');
+    let dummyElement2 = document.createElement('div');
+    dummyElement1.setAttribute("id", "dummy-id-1");
+    dummyElement2.setAttribute("id", "dummy-id-2");
+
+    let calls = 0;
+    service.beforeReveal$.subscribe((el:HTMLElement) => {
+      calls++;
+      expect(el.getAttribute("id")).toEqual(`dummy-id-${calls}`);
+    });
+
+    config.beforeReveal(dummyElement1);
+    config.beforeReveal(dummyElement2);
+
+    expect(calls).toEqual(2);
+  }));
+
+  it('should emit afterReveal$ event when calling afterReveal() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+
+    let config:NgsRevealConfig = { delay: 100};
+
+    service.init(config);
+
+    let dummyElement1 = document.createElement('div');
+    let dummyElement2 = document.createElement('div');
+    dummyElement1.setAttribute("id", "dummy-id-1");
+    dummyElement2.setAttribute("id", "dummy-id-2");
+
+    let calls = 0;
+    service.afterReveal$.subscribe((el:HTMLElement) => {
+      calls++;
+      expect(el.getAttribute("id")).toEqual(`dummy-id-${calls}`);
+    });
+
+    config.afterReveal(dummyElement1);
+    config.afterReveal(dummyElement2);
+
+    expect(calls).toEqual(2);
+  }));
+
+  it('should emit beforeReset$ event when calling beforeReset() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+
+    let config:NgsRevealConfig = { delay: 100};
+
+    service.init(config);
+
+    let dummyElement1 = document.createElement('div');
+    let dummyElement2 = document.createElement('div');
+    dummyElement1.setAttribute("id", "dummy-id-1");
+    dummyElement2.setAttribute("id", "dummy-id-2");
+
+    let calls = 0;
+    service.beforeReset$.subscribe((el:HTMLElement) => {
+      calls++;
+      expect(el.getAttribute("id")).toEqual(`dummy-id-${calls}`);
+    });
+
+    config.beforeReset(dummyElement1);
+    config.beforeReset(dummyElement2);
+
+    expect(calls).toEqual(2);
+  }));
+
+  it('should emit afterReset$ event when calling afterReset() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+
+    let config:NgsRevealConfig = { delay: 100};
+
+    service.init(config);
+
+    let dummyElement1 = document.createElement('div');
+    let dummyElement2 = document.createElement('div');
+    dummyElement1.setAttribute("id", "dummy-id-1");
+    dummyElement2.setAttribute("id", "dummy-id-2");
+
+    let calls = 0;
+    service.afterReset$.subscribe((el:HTMLElement) => {
+      calls++;
+      expect(el.getAttribute("id")).toEqual(`dummy-id-${calls}`);
+    });
+
+    config.afterReset(dummyElement1);
+    config.afterReset(dummyElement2);
+
+    expect(calls).toEqual(2);
+  }));
 });
