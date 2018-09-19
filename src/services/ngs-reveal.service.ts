@@ -78,12 +78,14 @@ export class NgsRevealService {
 
   // Window Object
   private window: Window & NgsHasScrollReveal;
+  private config: NgsRevealConfig;
+
 
    // Observable  sources
-   private beforeRevealSource: Subject<HTMLElement>;
-   private afterRevealSource: Subject<HTMLElement>;
-   private beforeResetSource: Subject<HTMLElement>;
-   private afterResetSource: Subject<HTMLElement>;
+  private beforeRevealSource: Subject<HTMLElement>;
+  private afterRevealSource: Subject<HTMLElement>;
+  private beforeResetSource: Subject<HTMLElement>;
+  private afterResetSource: Subject<HTMLElement>;
 
    /**
     * Observable to subscribe to and get notified before an element is revealed.
@@ -102,7 +104,7 @@ export class NgsRevealService {
     */
    afterReset$: Observable<HTMLElement>;
 
-  constructor(private config: NgsRevealConfig, private windowService: WindowService) {
+  constructor(config: NgsRevealConfig, windowService: WindowService) {
      // Observable  sources
      this.beforeRevealSource = new Subject<HTMLElement>();
      this.afterRevealSource = new Subject<HTMLElement>();
@@ -125,6 +127,8 @@ export class NgsRevealService {
    */
   init(config: NgsRevealConfig): void {
     if (this.window) {// universal support
+      this.config = config;
+
       // Set callbacks hooks:
       this.config.beforeReveal = (el: HTMLElement) => this.beforeRevealSource.next(el);
       this.config.afterReveal = (el: HTMLElement) => this.afterRevealSource.next(el);
@@ -134,6 +138,13 @@ export class NgsRevealService {
       // init the scrollReveal library with injected config
       this.sr = ScrollReveal(config);
     }
+  }
+
+    /**
+   * Gets the current configuration  used by ScrollReveal.
+   */
+  getConfig(): NgsRevealConfig {
+    return this.config;
   }
 
   /**
