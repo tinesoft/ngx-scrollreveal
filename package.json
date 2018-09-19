@@ -1,6 +1,6 @@
 {
   "name": "ng-scrollreveal",
-  "description": "Angular 2+ directives for ScrollReveal JS: Easy scroll animations library for web and mobile browsers.",
+  "description": "Angular directives for ScrollReveal : a JavaScript library for easily animating elements as they enter/leave the viewport.",
   "version": "2.2.0",
   "homepage": "https://github.com/tinesoft/ng-scrollreveal",
   "author": {
