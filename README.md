@@ -42,7 +42,7 @@ npm install --save scrollreveal
 >**Note**:If you are using `SystemJS`, you should adjust your configuration to point to the UMD bundle.
 In your systemjs config file, `map` needs to tell the System loader where to look for `ng-scrollreveal`:
 
-```js
+```ts
 map: {
   'ng-scrollreveal': 'node_modules/ng-scrollreveal/bundles/ng-scrollreveal.min.js',
 }
@@ -50,7 +50,7 @@ map: {
 
 In your systemjs config file, `meta` needs to tell the System loader how to load `scrollreveal`:
 
-```js
+```ts
     meta: {
     './node_modules/scrollreveal/dist/scrollreveal.min.js': {
             format: 'amd'
@@ -77,41 +77,19 @@ npm install --save ng-scrollreveal
 
 Once installed you need to import the main module:
 
-```js
+```ts
 import {NgsRevealModule} from 'ng-scrollreveal';
 ```
-
-The only remaining part is to list the imported module in your application module. The exact method will be slightly
-different for the root (top-level) module for which you should end up with the code similar to (notice `NgsRevealModule.forRoot()`):
 
 ```ts
 import {NgsRevealModule} from 'ng-scrollreveal';
 
-// you can optionally provide a config, to change default options used by the directives
-const config:NgsRevealConfig = {
-    easing: 'cubic-bezier(0.2, 0, 0.5, 1)',
-    distance: '20px'
-}
-
 @NgModule({
   declarations: [AppComponent, ...],
-  imports: [NgsRevealModule.forRoot(config), ...],  
+  imports: [NgsRevealModule],  
   bootstrap: [AppComponent]
 })
 export class AppModule {
-}
-```
-
-Other modules in your application can simply import `NgsRevealModule`:
-
-```js
-import {NgsRevealModule} from 'ng-scrollreveal';
-
-@NgModule({
-  declarations: [OtherComponent, ...],
-  imports: [NgsRevealModule, ...], 
-})
-export class OtherModule {
 }
 ```
 
@@ -125,13 +103,13 @@ The library is composed of two main directives: `ngsReveal` and `ngsRevealSet`.
 
 Use this directive to reveal/hide a **single DOM element** upon scroll.
 
-##### Basic Usage:
+##### Basic Usage
 
 ```html
     <div class="item" ngsReveal>..</div>
 ```
 
-##### With Custom Options:
+##### With Custom Options
 
 You can also pass in a custom configuration object to the directive.
 
@@ -155,7 +133,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 >**Note:** The value is a list of CSS selectors (comma-separated).
 
 
-#### Basic Usage:
+#### Basic Usage
 
 ```html
     <div class="itemset" ngsRevealSet [ngsSelector]="'.item'">
@@ -167,7 +145,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
     </div>
 ```
 
-#### With Custom Options:
+#### With Custom Options
 
 ```html
     <div class="itemset" [ngsRevealSet]="{ reset:true}" [ngsSelector]="'.item'">
@@ -181,7 +159,7 @@ Use this directive to reveal/hide a **set of DOM elements** upon scroll.
 
 Configuration options are the same as ScrollReveal JS [configuration object](https://github.com/jlmakes/scrollreveal#2-configuration). 
 
-#### Sequentially animated items:
+#### Sequentially animated items
 
 Child items inside the parent set can be sequentially animated, by adding the `[ngsRevealInterval]` attribute.
 
@@ -212,7 +190,7 @@ import {NgsRevealConfig} from 'ng-scrollreveal';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [NgbTabsetConfig] // add NgsRevealConfig to the component providers
+  providers: [NgsRevealConfig] // add NgsRevealConfig to the component providers
 })
 export class AppComponent {
   constructor(config: NgsRevealConfig) {
@@ -239,8 +217,7 @@ import { NgsRevealService } from 'ng-scrollreveal';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [NgbTabsetConfig] // add NgsRevealConfig to the component providers
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy{
   constructor(private revealService: NgsRevealService) {

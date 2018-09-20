@@ -30,7 +30,7 @@ describe('Directive: NgsRevealSetDirective', () => {
 
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-      imports: [NgsRevealModule.forRoot()],
+      imports: [NgsRevealModule],
       declarations: [TestComponent]
     })
       .createComponent(TestComponent);
