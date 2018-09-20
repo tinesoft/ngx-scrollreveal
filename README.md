@@ -6,7 +6,7 @@
 [![devDependency Status](https://david-dm.org/tinesoft/ngx-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ngx-scrollreveal#info=devDependencies)
 [![Greenkeeper Badge](https://badges.greenkeeper.io/tinesoft/ngx-scrollreveal.svg)](https://greenkeeper.io/)
 
-ScrollReveal JS is a great library that allows easy scroll animations for web and mobile browsers.
+ScrollReveal is a JavaScript library for easily animating elements as they enter/leave the viewport.
 
 ## Demo
 
