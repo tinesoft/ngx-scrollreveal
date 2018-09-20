@@ -14,8 +14,8 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "genDir": "../tmp/lib-gen-dir/",
-    "flatModuleOutFile": "ng-scrollreveal.js",
-    "flatModuleId": "ng-scrollreveal",
+    "flatModuleOutFile": "ngx-scrollreveal.js",
+    "flatModuleId": "ngx-scrollreveal",
     "annotateForClosureCompiler": true
   }
 }

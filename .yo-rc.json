@@ -4,8 +4,8 @@
     "authorName": "Tine Kondo",
     "authorEmail": "kondotine@gmail.com",
     "githubUsername": "tinesoft",
-    "githubRepoName": "ng-scrollreveal",
-    "projectName": "ng-scrollreveal",
+    "githubRepoName": "ngx-scrollreveal",
+    "projectName": "ngx-scrollreveal",
     "projectVersion": "2.2.0",
     "projectDescription": "Angular directives for ScrollReveal : a JavaScript library for easily animating elements as they enter/leave the viewport.",
     "projectKeywords": [

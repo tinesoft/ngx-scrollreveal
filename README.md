@@ -1,20 +1,20 @@
-# ng-scrollreveal - [Angular](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
+# ngx-scrollreveal - [Angular](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
 
-[![npm version](https://badge.fury.io/js/ng-scrollreveal.svg)](https://badge.fury.io/js/ng-scrollreveal)
-[![Build Status](https://travis-ci.org/tinesoft/ng-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ng-scrollreveal)
-[![Coverage Status](https://coveralls.io/repos/github/tinesoft/ng-scrollreveal/badge.svg?branch=master)](https://coveralls.io/github/tinesoft/ng-scrollreveal?branch=master)
-[![devDependency Status](https://david-dm.org/tinesoft/ng-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ng-scrollreveal#info=devDependencies)
-[![Greenkeeper Badge](https://badges.greenkeeper.io/tinesoft/ng-scrollreveal.svg)](https://greenkeeper.io/)
+[![npm version](https://badge.fury.io/js/ngx-scrollreveal.svg)](https://badge.fury.io/js/ngx-scrollreveal)
+[![Build Status](https://travis-ci.org/tinesoft/ngx-scrollreveal.svg?branch=master)](https://travis-ci.org/tinesoft/ngx-scrollreveal)
+[![Coverage Status](https://coveralls.io/repos/github/tinesoft/ngx-scrollreveal/badge.svg?branch=master)](https://coveralls.io/github/tinesoft/ngx-scrollreveal?branch=master)
+[![devDependency Status](https://david-dm.org/tinesoft/ngx-scrollreveal/dev-status.svg?branch=master)](https://david-dm.org/tinesoft/ngx-scrollreveal#info=devDependencies)
+[![Greenkeeper Badge](https://badges.greenkeeper.io/tinesoft/ngx-scrollreveal.svg)](https://greenkeeper.io/)
 
 ScrollReveal JS is a great library that allows easy scroll animations for web and mobile browsers.
 
 ## Demo
 
-View all the directives in action at https://tinesoft.github.io/ng-scrollreveal
+View all the directives in action at https://tinesoft.github.io/ngx-scrollreveal
 
 ## Dependencies
 
-* [Angular](https://angular.io) (*requires* Angular 6+, [v2.2.0](https://github.com/tinesoft/ng-scrollreveal/tree/v2.2.0) is the latest version for Angular < 6 )
+* [Angular](https://angular.io) (*requires* Angular 6+, [v2.2.0](https://github.com/tinesoft/ngx-scrollreveal/tree/v2.2.0) is the latest version for Angular < 6 )
 * [ScrollReveal](https://scrollrevealjs.org) (*requires* ScrollReveal 4 or higher, tested with 4.0.2)
 
 ## Installation
@@ -40,11 +40,11 @@ npm install --save scrollreveal
 ##### SystemJS
 
 >**Note**:If you are using `SystemJS`, you should adjust your configuration to point to the UMD bundle.
-In your systemjs config file, `map` needs to tell the System loader where to look for `ng-scrollreveal`:
+In your systemjs config file, `map` needs to tell the System loader where to look for `ngx-scrollreveal`:
 
 ```ts
 map: {
-  'ng-scrollreveal': 'node_modules/ng-scrollreveal/bundles/ng-scrollreveal.min.js',
+  'ngx-scrollreveal': 'node_modules/ngx-scrollreveal/bundles/ngx-scrollreveal.min.js',
 }
 ```
 
@@ -69,20 +69,20 @@ In your index.html file, add script tag to load  `scrollreveal` globally:
 
 ---
 
-Now install `ng-scrollreveal` via:
+Now install `ngx-scrollreveal` via:
 
 ```shell
-npm install --save ng-scrollreveal
+npm install --save ngx-scrollreveal
 ```
 
 Once installed you need to import the main module:
 
 ```ts
-import {NgsRevealModule} from 'ng-scrollreveal';
+import {NgsRevealModule} from 'ngx-scrollreveal';
 ```
 
 ```ts
-import {NgsRevealModule} from 'ng-scrollreveal';
+import {NgsRevealModule} from 'ngx-scrollreveal';
 
 @NgModule({
   declarations: [AppComponent, ...],
@@ -184,7 +184,7 @@ You can inject the config service, typically in your root component, and customi
 
 ```ts
 import {Component} from '@angular/core';
-import {NgsRevealConfig} from 'ng-scrollreveal';
+import {NgsRevealConfig} from 'ngx-scrollreveal';
 
 @Component({
   selector: 'app-root',
@@ -194,7 +194,7 @@ import {NgsRevealConfig} from 'ng-scrollreveal';
 })
 export class AppComponent {
   constructor(config: NgsRevealConfig) {
-    // customize default values of ng-scrollreveal directives used by this component tree
+    // customize default values of ngx-scrollreveal directives used by this component tree
     config.duration = 5000;
     config.easing = 'cubic-bezier(0.645, 0.045, 0.355, 1)';
 
@@ -212,7 +212,7 @@ You can now subscribe to some events triggered by `ScrollReveal` before/after an
 
 ```ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgsRevealService } from 'ng-scrollreveal';
+import { NgsRevealService } from 'ngx-scrollreveal';
 
 @Component({
   selector: 'app-root',
@@ -259,4 +259,4 @@ export class AppComponent implements OnInit, OnDestroy{
 
 ## Credits
 
-`ng-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!
+`ngx-scrollreveal` is built upon [ScrollReveal JS](https://scrollrevealjs.org) by **Julian Lloyd**. Thanks to him for the great work!

@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
         // Add .withServerTransition() to support Universal rendering.
         // The application ID can be any identifier which is unique on
         // the page.
-        BrowserModule.withServerTransition({ appId: 'ng-scrollreveal-demo-id' }),
+        BrowserModule.withServerTransition({ appId: 'ngx-scrollreveal-demo-id' }),
         TransferHttpCacheModule,
         FormsModule,
         HttpModule,

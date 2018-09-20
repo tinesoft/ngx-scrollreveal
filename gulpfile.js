@@ -70,8 +70,8 @@ const argv = yargs
   .argv;
 
 const config = {
-  libraryName: 'ng-scrollreveal',
-  unscopedLibraryName: 'ng-scrollreveal',
+  libraryName: 'ngx-scrollreveal',
+  unscopedLibraryName: 'ngx-scrollreveal',
   allSrc: 'src/**/*',
   allTs: 'src/**/!(*.spec).ts',
   demoDir: 'demo/',
@@ -465,7 +465,7 @@ gulp.task('serve:demo-hmr', () => {
 });
 
 gulp.task('build:demo', () => {
-  return execDemoCmd(`build --preserve-symlinks --prod --base-href /ng-scrollreveal/ --deploy-url /ng-scrollreveal/`, { cwd: `${config.demoDir}`});
+  return execDemoCmd(`build --preserve-symlinks --prod --base-href /ngx-scrollreveal/ --deploy-url /ngx-scrollreveal/`, { cwd: `${config.demoDir}`});
 });
 
 gulp.task('serve:demo-ssr',['build:demo-ssr'], () => {
@@ -474,7 +474,7 @@ gulp.task('serve:demo-ssr',['build:demo-ssr'], () => {
 
 gulp.task('build:demo-ssr', () => {
   return execDemoCmd(`build --preserve-symlinks --prod`, { cwd: `${config.demoDir}`})
-    .then(() => execDemoCmd(`run ng-scrollreveal-demo:server`, { cwd: `${config.demoDir}` }))
+    .then(() => execDemoCmd(`run ngx-scrollreveal-demo:server`, { cwd: `${config.demoDir}` }))
     .then(() => execCmd('webpack', '--config webpack.server.config.js --progress --colors', { cwd: `${config.demoDir}` }, `/${config.demoDir}`))
     .catch(e => {
       fancyLog(acolors.red(`build:demo-ssr command failed. See below for errors.\n`));
@@ -624,9 +624,9 @@ gulp.task('release', (cb) => {
 // Utility Tasks
 /////////////////////////////////////////////////////////////////////////////
 
-// Link 'dist' folder (create a local 'ng-scrollreveal' package that symlinks to it)
-// This way, we can have the demo project declare a dependency on 'ng-scrollreveal' (as it should)
-// and, thanks to 'npm link ng-scrollreveal' on demo project, be sure to always use the latest built
+// Link 'dist' folder (create a local 'ngx-scrollreveal' package that symlinks to it)
+// This way, we can have the demo project declare a dependency on 'ngx-scrollreveal' (as it should)
+// and, thanks to 'npm link ngx-scrollreveal' on demo project, be sure to always use the latest built
 // version of the library ( which is in 'dist/' folder)
 gulp.task('link', () => {
   return execExternalCmd('npm', 'link', { cwd: `${config.outputDir}` });
