@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-scrollreveal-demo": {
+    "ngx-scrollreveal-demo": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -60,23 +60,23 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-scrollreveal-demo:build",
+            "browserTarget": "ngx-scrollreveal-demo:build",
             "hmrWarning": false
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-scrollreveal-demo:build:production"
+              "browserTarget": "ngx-scrollreveal-demo:build:production"
             },
             "hmr": {
               "hmr": true,
-              "browserTarget": "ng-scrollreveal-demo:build:hmr"
+              "browserTarget": "ngx-scrollreveal-demo:build:hmr"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-scrollreveal-demo:build"
+            "browserTarget": "ngx-scrollreveal-demo:build"
           }
         },
         "test": {
@@ -118,7 +118,7 @@
         }
       }
     },
-    "ng-scrollreveal-demo-e2e": {
+    "ngx-scrollreveal-demo-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -126,7 +126,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-scrollreveal-demo:serve"
+            "devServerTarget": "ngx-scrollreveal-demo:serve"
           }
         },
         "lint": {
@@ -141,5 +141,5 @@
       }
     }
   },
-  "defaultProject": "ng-scrollreveal-demo"
+  "defaultProject": "ngx-scrollreveal-demo"
 }

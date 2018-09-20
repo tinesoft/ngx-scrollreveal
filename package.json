@@ -1,15 +1,15 @@
 {
-  "name": "ng-scrollreveal",
+  "name": "ngx-scrollreveal",
   "description": "Angular directives for ScrollReveal : a JavaScript library for easily animating elements as they enter/leave the viewport.",
   "version": "2.2.0",
-  "homepage": "https://github.com/tinesoft/ng-scrollreveal",
+  "homepage": "https://github.com/tinesoft/ngx-scrollreveal",
   "author": {
     "name": "Tine Kondo",
     "url": "https://github.com/tinesoft"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tinesoft/ng-scrollreveal.git"
+    "url": "git://github.com/tinesoft/ngx-scrollreveal.git"
   },
   "license": "MIT",
   "keywords": [
@@ -22,14 +22,14 @@
     "reveal"
   ],
   "bugs": {
-    "url": "https://github.com/tinesoft/ng-scrollreveal/issues"
+    "url": "https://github.com/tinesoft/ngx-scrollreveal/issues"
   },
   "private": true,
   "scripts": {
     "start": "gulp build",
     "test": " gulp test",
     "demo": " gulp build:demo",
-    "check-travis": " travis-status --repo=tinesoft/ng-scrollreveal --branch=master --fail-pending || echo 'Not yet passing'"
+    "check-travis": " travis-status --repo=tinesoft/ngx-scrollreveal --branch=master --fail-pending || echo 'Not yet passing'"
   },
   "dependencies": {
     "@angular/common": "6.0.0",

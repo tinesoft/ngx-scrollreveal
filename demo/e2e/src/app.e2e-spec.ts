@@ -1,6 +1,6 @@
 import { NgScrollrevealDemoPage } from './app.po';
 
-describe('ng-scrollreveal-demo App', () => {
+describe('ngx-scrollreveal-demo App', () => {
   let page: NgScrollrevealDemoPage;
 
   beforeEach(() => {

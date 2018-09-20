@@ -1,4 +1,4 @@
-import { NgsRevealConfig } from 'ng-scrollreveal';
+import { NgsRevealConfig } from 'ngx-scrollreveal';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.titleService.setTitle('Home | ng-scrollreveal');
+    this.titleService.setTitle('Home | ngx-scrollreveal');
   }
 
 }

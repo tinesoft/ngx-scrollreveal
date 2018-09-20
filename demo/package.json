@@ -1,8 +1,8 @@
 {
-  "name": "ng-scrollreveal-demo",
+  "name": "ngx-scrollreveal-demo",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "Demo app for ng-scrollreveal",
+  "description": "Demo app for ngx-scrollreveal",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "npm link ng-scrollreveal"
+    "postinstall": "npm link ngx-scrollreveal"
   },
   "private": true,
   "dependencies": {

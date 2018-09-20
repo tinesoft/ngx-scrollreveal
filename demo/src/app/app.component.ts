@@ -3,7 +3,7 @@ import { Router, NavigationEnd, RouterEvent } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { NgsRevealService } from 'ng-scrollreveal';
+import { NgsRevealService } from 'ngx-scrollreveal';
 
 @Component({
   selector: 'app-root',
