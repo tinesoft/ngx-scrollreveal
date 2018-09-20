@@ -14,7 +14,7 @@ import { HomeComponent } from './home.component';
         FormsModule,
         HomeRoutingModule,
         NgbAccordionModule.forRoot(),
-        NgsRevealModule.forRoot()
+        NgsRevealModule
     ],
     declarations: [HomeComponent],
 })
