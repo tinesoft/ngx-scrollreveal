@@ -69,7 +69,9 @@ export interface NgsHasScrollReveal {
  * It delegates the work to SR, when DOM manipulation is possible (i.e app is not running in a web worker for e.g).
  * If not possible, most methods simply do nothing, as DOM elements are not available anyway.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NgsRevealService {
 
   // the Magic Maker !

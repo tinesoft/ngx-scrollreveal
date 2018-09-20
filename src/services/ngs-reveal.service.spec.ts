@@ -6,17 +6,20 @@ import { NgsRevealConfig } from './ngs-reveal-config';
 import { WindowService } from './window.service';
 
 describe('Service: NgsReveal', () => {
+  let service: NgsRevealService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [NgsRevealConfig, NgsRevealService, WindowService]
     });
+    service = TestBed.get(NgsRevealService);
   });
 
-  it('should create the service instance...', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should create the service instance...', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
-  it('should set callbacks on provided config when calling init()', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should set callbacks on provided config when calling init()', () => {
     
     let config:NgsRevealConfig = { delay: 100};
 
@@ -26,9 +29,9 @@ describe('Service: NgsReveal', () => {
     expect(typeof (config.afterReveal)).toEqual('function');
     expect(typeof (config.beforeReset)).toEqual('function');
     expect(typeof (config.afterReset)).toEqual('function');
-  }));
+  });
 
-  it('should emit beforeReveal$ event when calling beforeReveal() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should emit beforeReveal$ event when calling beforeReveal() callback', () => {
 
     let config:NgsRevealConfig = { delay: 100};
 
@@ -49,9 +52,9 @@ describe('Service: NgsReveal', () => {
     config.beforeReveal(dummyElement2);
 
     expect(calls).toEqual(2);
-  }));
+  });
 
-  it('should emit afterReveal$ event when calling afterReveal() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should emit afterReveal$ event when calling afterReveal() callback', () => {
 
     let config:NgsRevealConfig = { delay: 100};
 
@@ -72,9 +75,9 @@ describe('Service: NgsReveal', () => {
     config.afterReveal(dummyElement2);
 
     expect(calls).toEqual(2);
-  }));
+  });
 
-  it('should emit beforeReset$ event when calling beforeReset() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should emit beforeReset$ event when calling beforeReset() callback', () => {
 
     let config:NgsRevealConfig = { delay: 100};
 
@@ -95,9 +98,9 @@ describe('Service: NgsReveal', () => {
     config.beforeReset(dummyElement2);
 
     expect(calls).toEqual(2);
-  }));
+  });
 
-  it('should emit afterReset$ event when calling afterReset() callback', inject([NgsRevealService], (service: NgsRevealService) => {
+  it('should emit afterReset$ event when calling afterReset() callback', () => {
 
     let config:NgsRevealConfig = { delay: 100};
 
@@ -118,5 +121,5 @@ describe('Service: NgsReveal', () => {
     config.afterReset(dummyElement2);
 
     expect(calls).toEqual(2);
-  }));
+  });
 });

@@ -18,11 +18,4 @@ export { NgsRevealDirective, NgsRevealSetDirective } from './directives/index';
   declarations: [NgsRevealDirective, NgsRevealSetDirective]
 })
 export class NgsRevealModule {
-
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: NgsRevealModule,
-      providers: [WindowService, NgsRevealService, NgsRevealConfig]
-    };
-  }
 }
