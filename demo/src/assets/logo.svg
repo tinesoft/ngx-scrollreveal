@@ -1,0 +1,27 @@
+<svg width="250" height="250" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="252" height="252" id="canvas_background" fill="none"/>
+ </g>
+
+ <g>
+  <title>Layer 1</title>
+  <rect id="backgroundrect" width="100" height="100" x="0" y="0" fill="none"/>
+  <g id="svg_5" class="currentLayer">
+   <path id="svg_1" fill="#22252C" d="m125,30l0,0l0,0l-93.1,33.2l14.2,123.1l78.9,43.7l0,0l0,0l78.9,-43.7l14.2,-123.1l-93.1,-33.2zm0,0l0,0"/>
+   <path id="svg_2" fill="#0b1019" d="m125,30l0,22.2l0,-0.1l0,101.3l0,0l0,76.6l0,0l78.9,-43.7l14.2,-123.1l-93.1,-33.2z"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 2</title>
+  <g stroke="null" id="svg_11">
+   <rect stroke="null" id="svg_3" rx="3" height="63.843792" width="15.11416" y="66.499924" x="72.614841" fill-rule="evenodd" fill="#FFCB36"/>
+   <rect stroke="null" id="svg_4" rx="3" height="113.500075" width="15.11416" y="66.499924" x="133.071483" fill-rule="evenodd" fill="#007D97"/>
+   <rect stroke="null" id="svg_6" rx="3" height="28.375019" width="15.11416" y="66.499924" x="102.843162" fill-rule="evenodd" fill="#2EAD6D"/>
+   <rect stroke="null" id="svg_7" rx="3" height="63.843792" width="15.11416" y="116.156207" x="102.843162" fill-rule="evenodd" fill="#E31D65"/>
+   <rect stroke="null" id="svg_8" rx="3" height="63.843792" width="15.11416" y="66.499924" x="163.299804" fill-rule="evenodd" fill="#E31D65"/>
+   <rect stroke="null" id="svg_9" rx="3" height="28.375019" width="15.11416" y="151.624981" x="72.614841" fill-rule="evenodd" fill="#FF7C35"/>
+   <rect stroke="null" id="svg_10" rx="3" height="28.375019" width="15.11416" y="151.624981" x="163.299804" fill-rule="evenodd" fill="#553BB8"/>
+  </g>
+ </g>
+</svg>

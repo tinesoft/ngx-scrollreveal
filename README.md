@@ -1,3 +1,7 @@
+<p align="center">
+  <img height="256px" width="256px" style="text-align: center;" src="https://cdn.rawgit.com/tinesoft/ngx-scrollreveal/master/demo/src/assets/logo.svg">
+</p>
+
 # ngx-scrollreveal - [Angular](http://angular.io/) directives for [ScrollReveal JS](https://scrollrevealjs.org/)
 
 [![npm version](https://badge.fury.io/js/ngx-scrollreveal.svg)](https://badge.fury.io/js/ngx-scrollreveal)
