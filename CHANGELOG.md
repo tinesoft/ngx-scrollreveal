@@ -1,3 +1,78 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/tinesoft/ngx-scrollreveal/compare/v2.2.0...v3.0.0) (2018-09-25)
+
+
+### Chores
+
+* **core:** rename the project into `ngx-scrollreveal` ([f4c4d1a](https://github.com/tinesoft/ngx-scrollreveal/commit/f4c4d1a))
+
+
+### Features
+
+* **core:** migrate to ScrollReveal `v4.x.x` ([7b3c816](https://github.com/tinesoft/ngx-scrollreveal/commit/7b3c816))
+* **core:** remove the `forRoot()` in `NgsRevealModule` (no longer needed with Angular 6) ([b708dec](https://github.com/tinesoft/ngx-scrollreveal/commit/b708dec))
+* **core:** update to `Angular v6.x.x` and higher ([54c8a0a](https://github.com/tinesoft/ngx-scrollreveal/commit/54c8a0a))
+
+
+### BREAKING CHANGES
+
+* **core:** imports in your application must be updated to consider the new package name `ngx-scrollreveal`
+
+Before:
+```
+npm install --save ng-scrollreveal
+
+...
+
+import { ... } from 'ng-scrollreveal';
+```
+
+After:
+```
+npm install --save ngx-scrollreveal
+
+...
+
+import { ... } from 'ngx-scrollreveal';
+```
+* **core:** `NgsRevealModule.forRoot()` has been removed, and internally replaced by use of new `providedIn` option in `@Injectable`
+
+Before:
+
+```ts
+import {NgsRevealModule} from 'ng-scrollreveal';
+
+@NgModule({
+  declarations: [AppComponent, ...],
+  imports: [NgsRevealModule.forRoot()],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+
+After:
+
+```ts
+import {NgsRevealModule} from 'ng-scrollreveal';
+
+@NgModule({
+  declarations: [AppComponent, ...],
+  imports: [NgsRevealModule],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+```
+* **core:** migration to ScrollReveal `v4.x.x` brings some breaking changes to be addressed
+
+- `@types/scrollreveal` is no longer necessary and **must be removed** from your `package.son`
+- `options.distance` now only supports `em`, `px` and `%` values
+- `NgsRevealConfig` default values have been updated to match [ScrollReveal](https://scrollrevealjs.org/api/defaults.html)'s
+- be aware that `ScrollReveal` now requires a **commercial license**, unless for [GPL-3.0](https://opensource.org/licenses/GPL-3.0) compatible open source projects.
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/tinesoft/ngx-scrollreveal/compare/v2.1.0...v2.2.0) (2017-11-22)
 
@@ -59,13 +134,13 @@
 
 ### Features
 
-* **all:** making @IgorMinar happy all the way (it's just angular!) ([061c648](https://github.com/tinesoft/ngx-scrollreveal/commit/061c648))
+* **all:** making [@IgorMinar](https://github.com/IgorMinar) happy all the way (it's just angular!) ([061c648](https://github.com/tinesoft/ngx-scrollreveal/commit/061c648))
 
 
 ### BREAKING CHANGES
 
-* **all:** rename UMD bundled file from `ngx-scrollreveal.min.js` to `ngx-scrollreveal.umd.js`
-* **all:** rename package from `ng2-scrollreveal` to `ngx-scrollreveal` to conform with new Angular Naming Guidelines.
+* **all:** rename UMD bundled file from `ng-scrollreveal.min.js` to `ng-scrollreveal.umd.js`
+* **all:** rename package from `ng2-scrollreveal` to `ng-scrollreveal` to conform with new Angular Naming Guidelines.
 
 This only affect how you install and import the library (no actual breaking changes in code).
 
@@ -82,10 +157,10 @@ import { NgsRevealModule } from 'ng2-scrollreveal';
 After:
 
 ```
-npm install --save ngx-scrollreveal
+npm install --save ng-scrollreveal
 ...
 
-import { NgsRevealModule } from 'ngx-scrollreveal';
+import { NgsRevealModule } from 'ng-scrollreveal';
 ```
 
 
