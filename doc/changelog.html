@@ -1,0 +1,215 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-scrollreveal documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ngx-scrollreveal documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<p><a name="3.0.0"></a></p>
+<h1 id="3-0-0-2018-09-25-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/v2.2.0...v3.0.0">3.0.0</a> (2018-09-25)</h1>
+<h3 id="chores">Chores</h3>
+<ul>
+<li><strong>core:</strong> rename the project into <code>ngx-scrollreveal</code> (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/f4c4d1a">f4c4d1a</a>)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>core:</strong> migrate to ScrollReveal <code>v4.x.x</code> (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/7b3c816">7b3c816</a>)</li>
+<li><strong>core:</strong> remove the <code>forRoot()</code> in <code>NgsRevealModule</code> (no longer needed with Angular 6) (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/b708dec">b708dec</a>)</li>
+<li><strong>core:</strong> update to <code>Angular v6.x.x</code> and higher (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/54c8a0a">54c8a0a</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>core:</strong> imports in your application must be updated to consider the new package name <code>ngx-scrollreveal</code></li>
+</ul>
+<p>Before:</p>
+<div><pre class="line-numbers"><code class="language-none">npm install --save ng-scrollreveal
+
+...
+
+import { ... } from &#39;ng-scrollreveal&#39;;</code></pre></div><p>After:</p>
+<div><pre class="line-numbers"><code class="language-none">npm install --save ngx-scrollreveal
+
+...
+
+import { ... } from &#39;ngx-scrollreveal&#39;;</code></pre></div><ul>
+<li><strong>core:</strong> <code>NgsRevealModule.forRoot()</code> has been removed, and internally replaced by use of new <code>providedIn</code> option in <code>@Injectable</code></li>
+</ul>
+<p>Before:</p>
+<div><pre class="line-numbers"><code class="language-ts">import {NgsRevealModule} from &#39;ng-scrollreveal&#39;;
+
+&#64;NgModule({
+  declarations: [AppComponent, ...],
+  imports: [NgsRevealModule.forRoot()],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}</code></pre></div><p>After:</p>
+<div><pre class="line-numbers"><code class="language-ts">import {NgsRevealModule} from &#39;ng-scrollreveal&#39;;
+
+&#64;NgModule({
+  declarations: [AppComponent, ...],
+  imports: [NgsRevealModule],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}</code></pre></div><ul>
+<li><p><strong>core:</strong> migration to ScrollReveal <code>v4.x.x</code> brings some breaking changes to be addressed</p>
+</li>
+<li><p><code>@types/scrollreveal</code> is no longer necessary and <strong>must be removed</strong> from your <code>package.son</code></p>
+</li>
+<li><code>options.distance</code> now only supports <code>em</code>, <code>px</code> and <code>%</code> values</li>
+<li><code>NgsRevealConfig</code> default values have been updated to match <a href="https://scrollrevealjs.org/api/defaults.html">ScrollReveal</a>&#39;s</li>
+<li>be aware that <code>ScrollReveal</code> now requires a <strong>commercial license</strong>, unless for <a href="https://opensource.org/licenses/GPL-3.0">GPL-3.0</a> compatible open source projects.</li>
+</ul>
+<p><a name="2.2.0"></a></p>
+<h1 id="2-2-0-2017-11-22-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/v2.1.0...v2.2.0">2.2.0</a> (2017-11-22)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>packaging:</strong> relax <code>peerDependencies</code> versions (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/ccfcec2">ccfcec2</a>)</li>
+</ul>
+<p><a name="2.1.0"></a></p>
+<h1 id="2-1-0-2017-09-23-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/0.6.1...v2.1.0">2.1.0</a> (2017-09-23)</h1>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>uinversal:</strong> add universal (server side rendering) support and update demo app (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/6fac32b">6fac32b</a>), closes <a href="https://github.com/tinesoft/ngx-scrollreveal/issues/50">#50</a></li>
+</ul>
+<p><a name="2.0.3"></a></p>
+<h2 id="2-0-3-2017-06-08-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/2.0.2...v2.0.3">2.0.3</a> (2017-06-08)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>config:</strong> relax type of <code>config.container</code> into <code>Element | string</code> (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/b8b56d0">b8b56d0</a>), closes <a href="https://github.com/tinesoft/ngx-scrollreveal/issues/15">#15</a></li>
+</ul>
+<p><a name="2.0.2"></a></p>
+<h2 id="2-0-2-2017-03-24-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/2.0.1...2.0.2">2.0.2</a> (2017-03-24)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>peerDependencies:</strong> remove &#39;angular-cli-ghpages&#39; from peerDependencies (accidentally added since v2.0.0) (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/141e133">141e133</a>)</li>
+</ul>
+<p><a name="2.0.1"></a></p>
+<h2 id="2-0-1-2017-03-24-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/2.0.0...2.0.1">2.0.1</a> (2017-03-24)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>config:</strong> export <code>NgsRevealConfig</code> service to allow global configuration (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/a3c64cc">a3c64cc</a>), closes <a href="https://github.com/tinesoft/ngx-scrollreveal/issues/6">#6</a></li>
+</ul>
+<p><a name="2.0.0"></a></p>
+<h1 id="2-0-0-2017-03-08-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/1.0.1...2.0.0">2.0.0</a> (2017-03-08)</h1>
+<h3 id="code-refactoring">Code Refactoring</h3>
+<ul>
+<li><strong>all:</strong> move demo app to own folder and improve build tools (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/504499b">504499b</a>)</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>all:</strong> making <a href="https://github.com/IgorMinar">@IgorMinar</a> happy all the way (it&#39;s just angular!) (<a href="https://github.com/tinesoft/ngx-scrollreveal/commit/061c648">061c648</a>)</li>
+</ul>
+<h3 id="breaking-changes">BREAKING CHANGES</h3>
+<ul>
+<li><strong>all:</strong> rename UMD bundled file from <code>ng-scrollreveal.min.js</code> to <code>ng-scrollreveal.umd.js</code></li>
+<li><strong>all:</strong> rename package from <code>ng2-scrollreveal</code> to <code>ng-scrollreveal</code> to conform with new Angular Naming Guidelines.</li>
+</ul>
+<p>This only affect how you install and import the library (no actual breaking changes in code).</p>
+<p>Before:</p>
+<div><pre class="line-numbers"><code class="language-none">npm install --save ng2-scrollreveal
+
+...
+
+import { NgsRevealModule } from &#39;ng2-scrollreveal&#39;;</code></pre></div><p>After:</p>
+<div><pre class="line-numbers"><code class="language-none">npm install --save ng-scrollreveal
+...
+
+import { NgsRevealModule } from &#39;ng-scrollreveal&#39;;</code></pre></div><p><a name="1.0.1"></a></p>
+<h2 id="1-0-1-2016-11-27-"><a href="https://github.com/tinesoft/ngx-scrollreveal/compare/1.0.0...1.0.1">1.0.1</a> (2016-11-27)</h2>
+<p><a name="1.0.0"></a></p>
+<h1 id="1-0-0-2016-11-09-">1.0.0 (2016-11-09)</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <script src="./js/menu-wc.js"></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
