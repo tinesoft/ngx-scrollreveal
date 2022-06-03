@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@angular/common": "6.0.0",
-    "@angular/core": "6.0.0",
+    "@angular/core": "11.0.5",
     "scrollreveal": "4.0.2"
   },
   "devDependencies": {
