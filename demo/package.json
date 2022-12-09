@@ -58,7 +58,7 @@
     "ts-loader": "~4.2.0",
     "reflect-metadata": "~0.1.10",
     "webpack-cli": "^2.0.14",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "@nguniversal/common": "^6.0.0",
     "@nguniversal/express-engine": "^6.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0"
